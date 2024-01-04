@@ -9,7 +9,7 @@ export const HeaderAdvertisement = () => {
   return (
     <div className="advertisement-container container-flex d-none d-md-block p-1 ">
       <div className="row align-items-center justify-content-between m-auto p-2">
-        <div className="col-4">
+        <div className="col-6 col-md-5">
           <span><FontAwesomeIcon icon={faTruck} style={icon_style}/> Delivery from 10.00 Am to 10.00 Pm</span>
         </div>
         <div className="col-4 d-flex flex-row justify-content-evenly">
