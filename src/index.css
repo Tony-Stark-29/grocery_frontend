@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
+ 
+:root {
+  --navbar-primary: #23403d;
+  --navbar-text-primary: #f06c54;
+  --background-primary: #fff4ec;
+  --footer-primary: #28443c;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+ 
+
+*{
+
+  margin: 0;
+  padding: 0;
+}
+
+/* advertisement strat */
+
+.advertisement-container
+{
+  font-family: 'Ubuntu Mono', monospace;
+  background-color: var(--navbar-primary);
+  color: var(--background-primary);
+  border-bottom: 1px solid #f06b5497;
+}
+
+
+/* advertisement end */
+
+
+/* primary navigation start */
+
+header
+{
+  background-color: var(--navbar-primary);
+}
+header img
+{
+  width: 50px;
+}
+
+
+/* primary navigation end */
