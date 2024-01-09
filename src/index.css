@@ -88,7 +88,7 @@ a:active {
 /*Hero Component start*/
 
 .hero-container {
-  min-height: 30vh;
+  min-height: 20vh;
 }
 
 .hero-container h3 {
@@ -107,11 +107,11 @@ a:active {
     center/cover;
     
 }
-.hero-card:nth-of-type(2) {
+.hero-card:nth-of-type(3) {
   background: url("https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fvegetables-752153_1280.jpg?alt=media&token=13b5f76a-61bd-44a0-8b85-8207a39aa579")
     center/cover;
 }
-.hero-card:nth-of-type(3) {
+.hero-card:nth-of-type(2) {
   color: var(--navbar-primary);
   background: url("https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fclose-up-organic-milk-with-gourmet-cheese.jpg?alt=media&token=0d173ea1-4132-4d77-bcee-ebe1a76a3fdd")
     center/cover;

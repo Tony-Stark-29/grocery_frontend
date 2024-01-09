@@ -29,7 +29,7 @@ export const PrimaryNavigation = () => {
           />
         </button>
       </div>
-      <div className="col-8 col-md-3 col-lg-2">
+      <div className="col-8 col-md-3 col-xl-2">
         <div>
           Tasty
           <img src={logo} alt="" />
@@ -38,23 +38,23 @@ export const PrimaryNavigation = () => {
       </div>
       <nav className="col-8 d-none d-lg-block navbar  navbar-expand-lg navbar-dark bg-transparent text-light ">
         <div
-          className=" collapse navbar-collapse justify-content-center"
+          className=" collapse navbar-collapse d-flex flex-column flex-md-row justify-content-center  "
           id="primaryNav"
         >
-          <ul className="navbar-nav">
+          <ul className="navbar-nav ">
             <NavItems />
           </ul>
         </div>
       </nav>
-      <div className="col-2 col-md-1 col-lg-2 navbar navbar-expand-lg">
-        <div className="action-container row m-auto px-lg-5 collape navbar-collapse">
-          <div className="col d-none d-lg-block">
+      <div className="col-2 col-md-1 col-xl-2 navbar navbar-expand-lg">
+        <div className="action-container row align-items-between m-auto px-lg-5  collape navbar-collapse">
+          <div className="col d-none d-xl-block ">
             <FontAwesomeIcon className=" action link-scale" icon={faUser} />
           </div>
-          <div className="col d-none d-lg-block">
+          <div className="col d-none d-xl-block ">
             <FontAwesomeIcon className=" action link-scale" icon={faHeart} />
           </div>
-          <div className="col">
+          <div className="col  ">
             <FontAwesomeIcon
               className="action  link-scale"
               icon={faCartShopping}

@@ -11,6 +11,7 @@ export const Hero = () => {
           <p>Every Fridays Check Best Market Deals!</p>
           <button className="btn btn-primary">Check Now</button>
         </div>
+
         <div className="col-12 col-lg-4 p-2 p-md-5  shadow-sm rounded hero-card hero-align-left">
           <h3 className="display-6 text-left">
             Tasty Vegetables <br /> from Farm Vendors
@@ -18,6 +19,7 @@ export const Hero = () => {
           <p>Every Fridays Check Best Market Deals!</p>
           <button className="btn btn-primary">Check Now</button>
         </div>
+
         <div className="col-12 col-lg-4 p-2 p-md-5  shadow-sm rounded hero-card hero-align-left">
           <h3 className="display-6 text-left">
             Tasty Vegetables <br /> from Farm Vendors
