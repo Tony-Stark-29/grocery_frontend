@@ -184,7 +184,7 @@ main
 /* Footer start */
 
 footer {
-  padding: 5rem;
+  padding: 3rem;
   font-family: "Quicksand", sans-serif;
   min-height: 30vh;
   background-color: var(--footer-primary);

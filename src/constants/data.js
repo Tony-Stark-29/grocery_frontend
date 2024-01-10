@@ -1,21 +1,6 @@
 export const products = [
    
-  {
-    _id: "659d27c28e2a5d5ea889aaed",
-    name: " ",
-    category: "Fruits",
-    description:
-      "Experience the natural sweetness and nutritional goodness of our fresh organic bananas. Picked at the peak of ripeness, these bananas are bursting with flavor and packed with essential nutrients. Known for their vibrant yellow peel and creamy texture, our organic bananas make a delicious and healthy snack for the whole family.",
-    price: 110,
-    unit: "Kg",
-    stock: 20,
-    tags: ["Mango"],
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fgrapes-582207_1280.jpg0c399120-08f5-41ad-b3c0-9b572f0043f8?alt=media&token=379432b1-de08-49b5-b69d-0da4f32bb72a",
-    createdAt: "2024-01-09T11:02:26.137Z",
-    updatedAt: "2024-01-09T11:02:26.137Z",
-    __v: 0,
-  } ,
+   
   {
     _id: "659d28218e2a5d5ea889aaf3",
     name: " Mango",
@@ -105,6 +90,7 @@ export const products = [
     price: 90,
     unit: "pack",
     stock: 10,
+    offer:"5",
     tags: ["vegetable", "broccoli"],
     imageUrl:
       "https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fbroccoli-1238250_1280.jpga51d1a47-26f6-4db4-b221-1e6c37cef71b?alt=media&token=dd08584c-87af-4cb4-8409-1580db23484a",

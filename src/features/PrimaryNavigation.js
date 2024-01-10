@@ -47,7 +47,7 @@ export const PrimaryNavigation = () => {
         </div>
       </nav>
       <div className="col-2 col-md-1 col-xl-2 navbar navbar-expand-lg">
-        <div className="action-container row align-items-between m-auto px-lg-5  collape navbar-collapse">
+        <div className="action-container row align-items-between m-auto   collape navbar-collapse">
           <div className="col d-none d-xl-block ">
             <FontAwesomeIcon className=" action link-scale" icon={faUser} />
           </div>
