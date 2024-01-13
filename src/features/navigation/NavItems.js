@@ -12,9 +12,9 @@ import {
 export const NavItems = () => {
   return (
     <>
-      <li className="nav-item mx-3">
-        <Link className="nav-link">
-          <FontAwesomeIcon className="fa-icons mx-2" icon={faShop} />
+      <li className="nav-item mx-3 ">
+        <Link className="nav-link ">
+          <FontAwesomeIcon className="fa-icons mx-2  " icon={faShop} />
           <span>Shop</span>
         </Link>
       </li>

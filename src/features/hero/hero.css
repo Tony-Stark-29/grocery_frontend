@@ -1,0 +1,59 @@
+
+ 
+.hero-container > div > div {
+  transition: all 300ms ease-out;
+  
+}
+
+.hero-container > div > div:nth-of-type(1) {
+   transform: translate(-100%);
+  animation:1s left-in 50ms linear forwards;
+
+}
+.hero-container > div > div:nth-of-type(2) {
+  animation:1s zoom-in  linear forwards;
+  transform: scale(0.10);
+}
+.hero-container > div > div:nth-of-type(3) {
+    transform: translate(100%);
+  animation:1s right-in 50ms linear forwards;
+ 
+}
+
+@keyframes zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+     opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes left-in {
+
+    0%{
+        opacity: 0;
+        transform: translate(-100%);
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translate(0);
+    }
+
+    
+}
+@keyframes right-in {
+    0%{
+        opacity: 0;
+        transform: translate(100%);
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translate(0);
+    }
+    
+}

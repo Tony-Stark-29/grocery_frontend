@@ -1,5 +1,6 @@
 .delivery-container {
-  padding: 1rem;
+
+  padding: 3rem;
   border-radius: 20px;
   position: relative;
   background: radial-gradient(#fff4ec 20%, #f06b5434 80%);
@@ -11,30 +12,53 @@
 }
 
 .delivery-container,.moto-container .btn-primary:hover,.btn-primary:active {
+   
   color: #000;
   border-color: #f06c54;
   background-color: transparent;
 }
 
 .delivery-container img {
+
   max-height: 300px;
 }
 
 .moto-container
 {
+
     
     max-height: 100vh;
-    border-radius: 10px;
+    border-radius: 20px;
     background:radial-gradient(#ffffffd3 10%,#a4d4bca0 80%);
+
+    
 }
+ 
 
 .moto-container p
 {
-    text-align: center;
+    
     font-size: 0.8rem;
 }
 
 .moto-container img
 {
     
+}
+
+@keyframes blur-zoom-out {
+
+
+  0%
+  {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100%
+  {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  
 }

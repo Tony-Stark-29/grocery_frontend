@@ -1,20 +1,21 @@
 import React from "react";
-import logo from "../resources/logo-hamper.png";
+import logo from "../../resources/logo-hamper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
-  faFacebookF,
   faInstagram,
   faWhatsapp,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import "./footer.css";
+
 export const Footer = () => {
   return (
-    <footer className="container-flex text-light ">
+    <footer className="primary-footer container-flex text-light ">
       <div className="container">
         <div className="row m-auto align-items-center">
           <div className="col-12 col-md-12 col-lg-6 d-flex flex-column">
-            <div>
+            <div className="text-center">
               Tasty
               <img src={logo} alt="" />
               Daily
@@ -26,7 +27,7 @@ export const Footer = () => {
                 sourcing locally and dispatching within hours through cold chain
                 logistics in eco-friendly containers.
               </p>
-              <p>© 2023 Tasty Daily Grocery WordPress Theme</p>
+              <p className="text-center">© 2023 Tasty Daily Grocery</p>
             </div>
             <div></div>
           </div>
@@ -47,7 +48,7 @@ export const Footer = () => {
             </nav>
           </div>
           <div className="col-12 col-md-6 col-lg-3">
-            <div className="d-flex flex-row  align-items-center justify-content-evenly fs-3">
+            <div className="media-links d-flex flex-row  align-items-center justify-content-evenly fs-3">
               <FontAwesomeIcon icon={faInstagram} />
               <FontAwesomeIcon icon={faFacebook} />
               <FontAwesomeIcon icon={faYoutube} />

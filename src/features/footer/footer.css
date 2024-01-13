@@ -1,0 +1,6 @@
+.primary-footer .media-links > *:hover
+{
+    transition:all 300ms ease-in-out ;
+    transform: scale(1.2);
+    color: var(--text-primary);
+}

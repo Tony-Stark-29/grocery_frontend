@@ -12,7 +12,7 @@ export const MobileNavigation = () => {
       id="mobileNav"
       aria-labelledby="offcanvasLabel"
     >
-      <div className="offcanvas-header">
+      <div className="offcanvas-header ">
         <h5 className="offcanvas-title text-light" id="offcanvasLabel">
           Tasty Daily
         </h5>

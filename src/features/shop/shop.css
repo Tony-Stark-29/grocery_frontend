@@ -20,3 +20,16 @@
     transition: all 300ms ease-out;
 
 }
+ 
+
+ .carousal-container img
+{
+    border-radius: 20px;
+    width: 100px;
+}
+ 
+.carousal-container img:hover
+{
+    transition: all 400ms ease-in;
+    transform: scale(1.2);
+}  

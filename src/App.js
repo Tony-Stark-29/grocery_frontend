@@ -1,26 +1,20 @@
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import { HeaderAdvertisement } from "./features/navigation/HeaderAdvertisement";
-import { Header } from "./features/Header";
-import { Hero } from "./features/Hero";
-import { Features } from "./features/Features";
-import { Footer } from "./features/Footer";
-import { Offer } from "./features/offers/Offer";
-import { Delivery } from "./features/promotion/Delivery";
-import { Moto } from "./features/promotion/Moto";
+import { Home } from "./views/Home";
+import { Shop } from "./views/Shop";
+import { NotFound } from "./views/NotFound";
 
 function App() {
   return (
     <div className="App">
-      <HeaderAdvertisement />
-      <Header />
-      <main>
-        <Hero />
-        <Features />
-        <Offer/>
-        <Delivery/>
-       <Moto/>
-      </main>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/shop" element={<Shop />} >
+            
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }

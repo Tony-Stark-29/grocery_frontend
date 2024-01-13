@@ -1,18 +1,13 @@
 import React from "react";
-import logo from "../resources/logo-hamper.png";
+import logo from "../../resources/logo-hamper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import {
-  faCartShopping,
-  faBars,
-  faUser,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
-import { NavItems } from "./navigation/NavItems";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { NavItems } from "./NavItems";
+import { NavigationUtilities } from "./NavigationUtilities";
 
 export const PrimaryNavigation = () => {
   return (
-    <div className="row m-auto text-light align-items-center justify-content-between px-2 p-lg-1">
+    <div className="row m-auto  text-light align-items-center justify-content-between p-2 px-lg-1 py-lg-3 ">
       <div className="d-block d-lg-none col-2">
         <button
           className="navbar-toggler"
@@ -29,7 +24,7 @@ export const PrimaryNavigation = () => {
           />
         </button>
       </div>
-      <div className="col-8 col-md-3 col-xl-2">
+      <div className="col-8 col-md-3 col-xl-2 text-center">
         <div>
           Tasty
           <img src={logo} alt="" />
@@ -46,21 +41,8 @@ export const PrimaryNavigation = () => {
           </ul>
         </div>
       </nav>
-      <div className="col-2 col-md-1 col-xl-2 navbar navbar-expand-lg">
-        <div className="action-container row align-items-between m-auto   collape navbar-collapse">
-          <div className="col d-none d-xl-block ">
-            <FontAwesomeIcon className=" action link-scale" icon={faUser} />
-          </div>
-          <div className="col d-none d-xl-block ">
-            <FontAwesomeIcon className=" action link-scale" icon={faHeart} />
-          </div>
-          <div className="col  ">
-            <FontAwesomeIcon
-              className="action  link-scale"
-              icon={faCartShopping}
-            />
-          </div>
-        </div>
+      <div className="col-2 col-md-1 col-xl-2 navbar navbar-expand-lg ">
+        <NavigationUtilities />
       </div>
     </div>
   );
