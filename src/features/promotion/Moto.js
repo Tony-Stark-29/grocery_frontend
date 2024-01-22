@@ -4,7 +4,7 @@ import service_boy from "../../resources/service-boy.webp";
 
 export const Moto = () => {
   return (
-    <section className="container moto-container p-4 my-4 overflow-hidden">
+    <section className=" moto-container p-4 my-4 overflow-hidden">
       <div className="d-flex flex-column flex-md-row align-items-center">
         <div className="text-center">
           <h2 className="h2 fw-bold  ">We Prioritize Organic Products</h2>

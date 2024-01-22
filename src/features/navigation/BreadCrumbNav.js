@@ -1,31 +1,30 @@
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, Router } from "react-router-dom";
+import "./navigation.css";
 
 export const BreadcrumbNav = () => {
   const location = useLocation();
-  const pathnames = location.pathname.split("/").filter((x) => x);
+  const pathnames = location.pathname.split("/").filter((p) => p);
+
+  const filtered = [...new Set(pathnames)];
 
   return (
-    <nav aria-label="breadcrumb  font-weight-light ">
-      <ol class="breadcrumb ">
-        <li class="breadcrumb-item">
-          <Link to="/">Home</Link>
+    <>
+      <ol class="breadcrumb d-flex flex-row  align-items-center justify-content-space-evenly ">
+        <li>
+          <Link to="/home">Home </Link>
         </li>
-        {pathnames.map((name, index) => {
-          const routeTo = `/${pathnames.slice(0, index + 1).join(">")}`;
-          console.log(routeTo);
+        {filtered.map((name, index) => {
+          const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           return (
-            <li key={index} class="breadcrumb-item">
-              <Link className="text-capitalize" to={routeTo}>
-                {routeTo.replace("/", "")}
-              </Link>
+            <li>
+              <span className="fw-bolder"> / </span>
+              <Link to={routeTo}> {name} </Link>
             </li>
           );
         })}
       </ol>
-      <h2 className="fs-1 fw-bolder text-capitalize text-shadow">
-        {pathnames[pathnames.length - 1]}
-      </h2>
-    </nav>
+      <div className="display-4 fw-bolder row">{filtered[filtered.length-1]}</div>
+    </>
   );
 };

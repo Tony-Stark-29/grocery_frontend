@@ -1,5 +1,22 @@
 export const products = [
   {
+    _id: "659cdd28218e2a5d5ea889aaf3",
+    name: " Mango",
+    category: "Fruits",
+    description:
+      "Mangoes are tropical stone fruits known for their sweet and juicy flesh. With a vibrant orange-yellow hue and a distinctive, succulent taste, mangoes are a popular choice for a delightful tropical flavor. They are rich in essential vitamins, particularly vitamin C, and provide a refreshing burst of natural sweetness. ",
+    price: 110,
+    unit: "Kg",
+    stock: 20,
+    offer: 15,
+    tags: ["Mango", "Fruit"],
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Ffood-1239241_1280.jpg3241f983-0717-4f2a-9877-e0aa61c4bb72?alt=media&token=b3064669-b28f-4f6e-a8d8-87388031e490",
+    createdAt: "2024-01-09T11:04:01.855Z",
+    updatedAt: "2024-01-09T11:04:01.855Z",
+    __v: 0,
+  },
+  {
     _id: "659d28218e2a5d5ea889aaf3",
     name: " Mango",
     category: "Fruits",
@@ -122,7 +139,8 @@ export const products = [
       "Onions serve as a foundation for countless recipes worldwide. They can be sautéed, caramelized, roasted, or eaten raw, adding depth and richness to dishes. From soups and stews to salads, stir-fries, and salsas, onions enhance the flavor profile of a wide range of cuisines.",
     price: 65,
     unit: "Kg",
-    stock: 40,
+    offer: "5",
+    stock: 0,
     tags: ["Onion", "Vegetable"],
     imageUrl:
       "https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fraw-onions-white-surface.jpg8ed49847-7470-4534-9dcd-e8705b9857b3?alt=media&token=f3ec0cc6-98b8-4f84-afc6-daf64c5dbd64",
@@ -131,6 +149,23 @@ export const products = [
     __v: 0,
   },
   {
+    _id: "659cdd28218e2a5d5ea889aaf3",
+    name: " Mango",
+    category: "Fruits",
+    description:
+      "Mangoes are tropical stone fruits known for their sweet and juicy flesh. With a vibrant orange-yellow hue and a distinctive, succulent taste, mangoes are a popular choice for a delightful tropical flavor. They are rich in essential vitamins, particularly vitamin C, and provide a refreshing burst of natural sweetness. ",
+    price: 110,
+    unit: "Kg",
+    stock: 20,
+    offer: 15,
+    tags: ["Mango", "Fruit"],
+    imageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Ffood-1239241_1280.jpg3241f983-0717-4f2a-9877-e0aa61c4bb72?alt=media&token=b3064669-b28f-4f6e-a8d8-87388031e490",
+    createdAt: "2024-01-09T11:04:01.855Z",
+    updatedAt: "2024-01-09T11:04:01.855Z",
+    __v: 0,
+  },
+  {
     _id: "659d28218e2a5d5ea889aaf3",
     name: " Mango",
     category: "Fruits",
@@ -253,7 +288,8 @@ export const products = [
       "Onions serve as a foundation for countless recipes worldwide. They can be sautéed, caramelized, roasted, or eaten raw, adding depth and richness to dishes. From soups and stews to salads, stir-fries, and salsas, onions enhance the flavor profile of a wide range of cuisines.",
     price: 65,
     unit: "Kg",
-    stock: 40,
+    offer: "5",
+    stock: 0,
     tags: ["Onion", "Vegetable"],
     imageUrl:
       "https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fraw-onions-white-surface.jpg8ed49847-7470-4534-9dcd-e8705b9857b3?alt=media&token=f3ec0cc6-98b8-4f84-afc6-daf64c5dbd64",

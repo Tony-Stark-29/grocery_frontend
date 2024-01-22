@@ -1,45 +1,51 @@
 import React from "react";
 import "./offer.css";
-import offer_header_image from "../../resources/offer-image.jpg";
+import offer_header_image from "../../resources/family-3d-vector.jpg";
 
 import { ProductCard } from "../shop/ProductCard";
 import { products } from "../../constants/data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleRight, faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const Offer = () => {
   return (
-    <section className="offer-container container bg-light  overflow-hidden shadow shadow-md my-3 p-0" style={{borderRadius:"20px"}}>
+    <section
+      className="offer-container   bg-light  overflow-hidden shadow shadow-md my-3 p-0 "
+      style={{ borderRadius: "20px" }}
+    >
       <div className="row m-auto text-center">
-        <div className="col  col-xl-4 d-flex flex-row  flex-md-row flex-xl-column m-0 p-0">
-          <div className="col-6  col-xl-12 offer-header-image p-0 m-0">
-            <img
-              src={offer_header_image}
-              alt="offer header"
-              className="img-fluid "
-            />
-          </div>
-          <div className="col  grocery-categories d-flex flex-row flex-wrap align-items-center m-0 p-2">
-            <div className="col-6 d-flex flex-column flex-wrap align-items-start px-5 ">
-              <p>Fruits</p>
-              <p>Vegetables</p>
-              <p>Diary</p>
-              <p>Bakery</p>
+        <div className="col-12 p-0  ">
+          <div className="row p-0 m-0 " style={{backgroundColor:"#fbe4da"}} >
+            <div className="col-12 col-lg-4 p-0">
+              <img
+                className="img-fluid "
+                src={offer_header_image}
+                alt="sale"
+             
+              />
             </div>
-            <div className="col-6 d-flex flex-column flex-wrap align-items-start px-5">
-              <p>Meat</p>
-              <p>Fishes</p>
-              <p>Spices</p>
-              <p>Snaks</p>
-            </div>
-            <div className="col-12 ">
-              <p>View All -&gt;</p>
+
+            <div className="col py-2 my-auto" >
+              <div className="row m-auto py-2">
+                <div className="col-12">
+                  <h2 className="display-3 fw-bolder" >Todays Deals</h2>
+                </div>
+                <div className="col-12">
+                  <h6 className="lead  " >Extra 10 % Discount</h6>
+                  <p>* on selected Products</p>
+                </div>
+                <div className="col-12">
+                  <button className="btn btn-outline-warning rounded-5">View All <FontAwesomeIcon icon={faArrowCircleRight} /></button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-        <div className="col-12 col-xl-8  d-flex flex-row flex-wrap flex-md-nowrap  flex-xl-wrap justify-content-start overflow-hidden m-0 p-0">
-          {products.slice(0, 8).map((item) => (
-            <ProductCard key={item._id} item={item} />
-          ))}
-        </div>
+
+        {products.slice(0, 6).map((item) => (
+          <ProductCard key={item._id} item={item} />
+        ))}
       </div>
     </section>
   );

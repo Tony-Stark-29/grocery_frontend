@@ -7,32 +7,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleLeft, faChevronCircleLeft, faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight } from "@fortawesome/free-regular-svg-icons";
+import { Link } from "react-router-dom";
 
-const customStyle = {
-  display: "block",
-  color: "white",
-  background: "grey",
-  borderRadius: "50%",
-  padding: "4px",
-};
-const LeftArrow = ({ className, style, onClick }) => (
-  <FontAwesomeIcon
-    icon={faLessThan}
-    className={className}
-    style={{ ...style, ...customStyle }}
-    onClick={onClick}
-  />
-);
-
-const RightArrow = ({ className, style, onClick }) => (
-  <FontAwesomeIcon
-    icon={faGreaterThan}
-    className={className}
-    style={{ ...style, ...customStyle }}
-    onClick={onClick}
-  />
-);
+ 
 
 export const ProductCategoryCarousel = () => {
   var settings = {
@@ -42,18 +21,19 @@ export const ProductCategoryCarousel = () => {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
+     
     responsive: [
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
     ],
   };
   return (
-    <div className="carousal-container container">
+    <div className="carousal-container container ">
       <Slider {...settings}>
         <div className="  p-3 text-center">
           <img
@@ -61,7 +41,7 @@ export const ProductCategoryCarousel = () => {
             src={vegeies}
             alt="First slide"
           />
-          <h6 className="my-3">Vegies</h6>
+          <Link to={`/shop/${"vegetables"}`} ><h6 className="my-3">Vegies</h6></Link>
         </div>
         <div className="  p-3 text-center">
           <img

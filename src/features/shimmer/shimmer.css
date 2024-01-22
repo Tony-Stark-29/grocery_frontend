@@ -1,0 +1,37 @@
+.shimmer {
+  border: 2px solid rgb(224, 224, 224);
+  border-radius: 20px;
+  background-color: rgb(237, 237, 237);
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background-size: 1200px 100%;
+  opacity: 0;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    background-position: -100% 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    background-position: 100% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+     opacity: 0.5;
+  }
+  50% {
+   opacity: 1;
+  }
+  100%{
+    opacity: 0.5;
+  }
+}

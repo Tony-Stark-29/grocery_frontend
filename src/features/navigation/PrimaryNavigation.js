@@ -14,9 +14,9 @@ export const PrimaryNavigation = () => {
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#mobileNav"
-          aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          
         >
           <FontAwesomeIcon
             className="navbar-toggle-icon fa-icons"

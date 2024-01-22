@@ -1,49 +1,69 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPercentage,
-  faStar,
-  faStarHalf,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPercentage, faStar } from "@fortawesome/free-solid-svg-icons";
 
 export const ProductFilter = () => {
   return (
-    <>
-      <div className="my-2 mx-lg-4">
-        <h4 className="fw-bold d-none d-md-block ">Price</h4>
-        <button className="btn btn-outline-success m-2 ">
-          Price Low - High
-        </button>
-        <button className="btn btn-outline-success m-2">
-          Price High - Light
-        </button>
-      </div>
-      <div className="my-2 mx-lg-4">
-        <h4 className="fw-bold d-none d-md-block">Rating</h4>
-        <div className="form-group">
-          <button className="btn btn-outline-success m-2 ">
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-          </button>
+    <div className="row   m-auto justify-content-between">
+          <h3>Filter</h3>
+          <div className="col-6 col-lg-2">
+            <div className="row m-auto p-0">
+              <h4>Price</h4>
+              <input
+                type="email"
+                class="w-25 mx-1 form-control"
+                id="floatingInputInvalid"
+                placeholder="Min"
+              />
+
+              <input
+                type="email"
+                class="w-25 mx-1 form-control"
+                id="floatingInputInvalid"
+                placeholder="Max"
+              />
+            </div>
+          </div>
+          <div className="col-6 col-lg-2">
+            <div className="row m-auto p-0">
+              <h4>Rating</h4>
+              <input
+                type="email"
+                class="w-25 mx-1 form-control"
+                id="floatingInputInvalid"
+                placeholder="Min"
+              />
+
+              <input
+                type="email"
+                class="w-25 mx-1 form-control"
+                id="floatingInputInvalid"
+                placeholder="Max"
+              />
+            </div>
+          </div>
+          <div className="col-6 col-lg-2">
+            <div className="row m-auto p-0">
+              <h4>Price</h4>
+              <input
+                type="email"
+                class="w-25 mx-1 form-control"
+                id="floatingInputInvalid"
+                placeholder="Min"
+              />
+
+              <input
+                type="email"
+                class="w-25 mx-1 form-control"
+                id="floatingInputInvalid"
+                placeholder="Max"
+              />
+            </div>
+          </div>
+          <div className="col-6 col-lg-2">
+            {/* Showing {products.length} products */}
+          </div>
+          
         </div>
-        <div className="form-group">
-          <button className="btn btn-outline-success m-2 ">
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-          </button>
-        </div>
-      </div>
-      <div className="my-2 mx-lg-4">
-        <h4 className="fw-bold d-none d-md-block">Offer</h4>
-        <button className="btn btn-outline-success my-2 mx-lg-4">
-          <span>
-            Offer <FontAwesomeIcon icon={faPercentage} />{" "}
-          </span>
-        </button>
-      </div>
-    </>
   );
 };

@@ -6,7 +6,7 @@ import { faIndianRupee } from "@fortawesome/free-solid-svg-icons";
 
 export const Delivery = () => {
   return (
-    <section className="delivery-container container d-flex flex-column flex-md-row align-items-center justify-content-evenly  shadow-sm my-4">
+    <section className="delivery-container   d-flex flex-column flex-md-row align-items-center justify-content-evenly  shadow-sm my-4">
       <img src={delivery_boy} alt="delivery" />
 
       <div className="w-75 text-center">

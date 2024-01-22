@@ -13,7 +13,7 @@ export const NavItems = () => {
   return (
     <>
       <li className="nav-item mx-3 ">
-        <Link className="nav-link ">
+        <Link className="nav-link " to="/shop">
           <FontAwesomeIcon className="fa-icons mx-2  " icon={faShop} />
           <span>Shop</span>
         </Link>
