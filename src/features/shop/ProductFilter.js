@@ -4,7 +4,7 @@ import { faPercentage, faStar } from "@fortawesome/free-solid-svg-icons";
 
 export const ProductFilter = () => {
   return (
-    <div className="row   m-auto justify-content-between">
+    <div className="d-flex flex-column   m-auto justify-content-between">
           <h3>Filter</h3>
           <div className="col-6 col-lg-2">
             <div className="row m-auto p-0">

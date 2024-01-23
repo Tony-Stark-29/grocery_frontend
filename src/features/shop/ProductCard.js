@@ -25,15 +25,15 @@ export const ProductCard = ({ item }) => {
       </div>
 
       <div className="card-body">
-        <Link className="h5 card-title text-capitalize font-weight-bolder" to={`/shop/:${item?.category.toLowerCase()}/:${item?.name.toLowerCase()}&${item?._id}}`}>
+        <Link className="h5 card-title text-capitalize font-weight-bolder" to={`/shop/${item?.category.toLowerCase()}/${item?.name.toLowerCase()}/${item?._id}`}>
           {item?.name}
         </Link>
         <p className="card-text font-weight-light">
           {`${item?.description?.split(" ").slice(0, 20).join(" ")}...`}
         </p>
         <div>
-          {item?.tags?.slice(0, 2).map((tag) => (
-            <span className="badge badge-pill text-dark bg-light  text-capitalize  text-left mx-1">
+          {item?.tags?.slice(0, 2).map((tag,index) => (
+            <span key={index} className="badge badge-pill text-dark bg-light  text-capitalize  text-left mx-1">
               {tag}
             </span>
           ))}

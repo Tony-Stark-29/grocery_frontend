@@ -9,7 +9,7 @@ import { Products } from "./features/shop/Products";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-light">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
@@ -17,7 +17,7 @@ function App() {
           <Route index element={<Products/>} ></Route>
           <Route path=":category"  >
             <Route index element={<ProductByCategory/>} ></Route>
-            <Route path=":id" element={<Product/>} ></Route>
+            <Route path=":name/:id" element={<Product/>} ></Route>
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />

@@ -20,20 +20,20 @@ export const CartModal = () => {
       </div>
 
       <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
+        className="offcanvas offcanvas-end"
+        tabIndex="-1"
         id="offcanvas"
         aria-labelledby="offcanvasLabel"
       >
-        <div class="offcanvas-header">
+        <div className="offcanvas-header">
           <button
             type="button"
-            class="btn-close text-reset"
+            className="btn-close text-reset"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body">
+        <div className="offcanvas-body">
           <CartPreview />
         </div>
       </div>

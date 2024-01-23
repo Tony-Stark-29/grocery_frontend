@@ -6,12 +6,8 @@ import juice from "../../resources/collages/organic-juice.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleLeft, faChevronCircleLeft, faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
-import { faArrowAltCircleRight } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
-
- 
+import "./shop.css";
 
 export const ProductCategoryCarousel = () => {
   var settings = {
@@ -21,19 +17,19 @@ export const ProductCategoryCarousel = () => {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
-     
+
     responsive: [
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
       },
     ],
   };
   return (
-    <div className="carousal-container container ">
+    <div className="carousal-container container  mt-2">
       <Slider {...settings}>
         <div className="  p-3 text-center">
           <img
@@ -41,16 +37,20 @@ export const ProductCategoryCarousel = () => {
             src={vegeies}
             alt="First slide"
           />
-          <Link to={`/shop/${"vegetables"}`} ><h6 className="my-3">Vegies</h6></Link>
+          <Link to={`/shop/${"vegetables"}`}>
+            <h6 className="my-3">Vegies</h6>
+          </Link>
         </div>
         <div className="  p-3 text-center">
           <img
             className="img-fluid rounded  shadow-sm m-auto "
             src={fruit}
             alt="Second slide"
-            vh-50
           />
-          <h6 className="my-3">Fruit</h6>
+          <Link className="link-success" to={`/shop/${"fruits"}`}>
+            {" "}
+            <h6 className="my-3">Fruit</h6>
+          </Link>
         </div>
         <div className=" p-3 text-center">
           <img
@@ -58,7 +58,9 @@ export const ProductCategoryCarousel = () => {
             src={bakery}
             alt="Third slide"
           />
-          <h6 className="my-3">Bakery</h6>
+          <Link to={`/shop/${"baking"}`}>
+            <h6 className="my-3">Baking</h6>
+          </Link>
         </div>
         <div className=" p-3 text-center">
           <img
@@ -66,23 +68,32 @@ export const ProductCategoryCarousel = () => {
             src={juice}
             alt="Third slide"
           />
-          <h6 className="my-3">Drinks</h6>
+
+          <Link to={`/shop/${"drinks"}`}>
+            <h6 className="my-3">Drinks</h6>
+          </Link>
         </div>
         <div className=" p-3 text-center">
           <img
             className="img-fluid rounded  shadow-sm m-auto "
-            src={vegeies}
-            alt="First slide"
+            src={juice}
+            alt="Third slide"
           />
-          <h6 className="my-3">Vegies</h6>
+
+          <Link to={`/shop/${"spices"}`}>
+            <h6 className="my-3">Spices</h6>
+          </Link>
         </div>
         <div className=" p-3 text-center">
           <img
             className="img-fluid rounded  shadow-sm m-auto "
-            src={fruit}
-            alt="Second slide"
+            src={juice}
+            alt="Third slide"
           />
-          <h6 className="my-3">Fruit</h6>
+
+          <Link to={`/shop/${"meat"}`}>
+            <h6 className="my-3">Meat</h6>
+          </Link>
         </div>
       </Slider>
     </div>

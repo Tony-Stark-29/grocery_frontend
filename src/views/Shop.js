@@ -15,13 +15,13 @@ export const Shop = () => {
     <div className="containner-fluid  m-auto">
       <HeaderAdvertisement />
       <Header />
-      <div className="d-flex flex-column align-items-center bg-light py-5 overflow-hidden ">
+      <div className="d-flex flex-column align-items-center bg-light py-5 shadow-sm overflow-hidden ">
         <BreadcrumbNav />
         {currPage==="shop" && <ProductCategoryCarousel />}
       </div>
       <main
         className="container-fluid my-3 bg-light rounded shadow-lg p-0  "
-        style={{ maxWidth: "1340px", margin: "auto" }}
+        style={{ maxWidth: "1440px", margin: "auto" }}
       >
         <Outlet/>
       </main>

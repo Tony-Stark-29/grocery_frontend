@@ -58,5 +58,5 @@
 a{
 
     text-decoration: none;
-    color:#23403d;
+    -bs-link-color:#23403d;
 }

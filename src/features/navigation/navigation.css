@@ -31,3 +31,8 @@
     opacity: 1;
   }
  
+  .shop-title
+  {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+  }

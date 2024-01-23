@@ -31,8 +31,7 @@ export const NavigationUtilities = () => {
           1
         </small>
         <div className="nav-dropdown-card card shadow">
-          cart preview
-          <CartPreview/>
+          <CartPreview />
         </div>
       </div>
       <div className="col  d-block d-lg-none ">

@@ -298,3 +298,16 @@ export const products = [
     __v: 0,
   },
 ];
+
+
+export const productInitialData= {
+  name:"",
+  category:"",
+  description:"",
+  stock:0,
+  unit:"",
+  offer:0,
+  price:0,
+  imageUrl:"",
+  tags:[],
+}
