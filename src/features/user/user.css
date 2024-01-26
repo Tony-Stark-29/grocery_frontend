@@ -1,0 +1,16 @@
+
+.login-icon
+{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--navbar-primary);
+    border-radius: 50%;
+    font-size: 1.6rem;
+    color:var(--navbar-text-primary);
+    width: 50px;
+    height: 50px;
+}
+
+ 

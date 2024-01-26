@@ -14,7 +14,10 @@ export const NavigationUtilities = () => {
   return (
     <div className="action-container row  m-auto text-center  collape navbar-collapse fs-5">
       <div className="nav-dropdown-container  col d-none d-xl-block ">
-        <FontAwesomeIcon className="  link-scale" icon={faUser} />
+        <Link to="/shop/myaccount/login">
+          {" "}
+          <FontAwesomeIcon className="  link-scale" icon={faUser} />
+        </Link>
       </div>
       <div className="nav-dropdown-container col d-none d-xl-block ">
         <FontAwesomeIcon className="  link-scale" icon={faHeart} />

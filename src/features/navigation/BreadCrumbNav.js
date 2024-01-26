@@ -7,8 +7,8 @@ export const BreadcrumbNav = () => {
   const decodedPathnames = decodeURIComponent(location.pathname);
   const pathnames = decodedPathnames
     .split("/")
-    .filter((path) => path.length != 0 && path.length < 20)
-    .map((path) => path.toString("utf-8"));
+    .filter((path) => path.length != 0 && path.length < 20);
+
   const filtered = [...new Set(pathnames)];
 
   return (
@@ -20,9 +20,13 @@ export const BreadcrumbNav = () => {
         {filtered.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           return (
-            <li key={index} >
-              <span className="fw-bolder"> / </span>
-              <Link to={routeTo}> {name} </Link>
+            <li key={index}>
+              <span className="fw-bolder "> / </span>
+              {index !== filtered.length - 1 ? (
+                <Link className="fw-bolder text-capitalize" to={routeTo}> {name} </Link>
+              ) : (
+                <span className="fw-bolder text-capitalize">{name}</span>
+              )}
             </li>
           );
         })}

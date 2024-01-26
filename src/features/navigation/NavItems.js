@@ -19,25 +19,25 @@ export const NavItems = () => {
         </Link>
       </li>
       <li className="nav-item mx-3">
-        <Link className="nav-link">
+        <Link className="nav-link" to="/shop/vegetables" >
           <FontAwesomeIcon className="fa-icons mx-2" icon={faLeaf} />
           <span>Vegies</span>
         </Link>
       </li>
       <li className="nav-item mx-3">
-        <Link className="nav-link">
+        <Link className="nav-link" to="/shop/fruits">
           <FontAwesomeIcon className="fa-icons" icon={faAppleWhole} />
           <span>Fruits</span>
         </Link>
       </li>
       <li className="nav-item mx-3">
-        <Link className="nav-link">
+        <Link className="nav-link"  to="/shop/meat">
           <FontAwesomeIcon className="fa-icons mx-2" icon={faDrumstickBite} />
           <span>Meat</span>
         </Link>
       </li>
       <li className="nav-item mx-3">
-        <Link className="nav-link">
+        <Link className="nav-link" to="/shop/dairy">
           <FontAwesomeIcon className="fa-icons mx-2" icon={faCow} />
           <span>Dairy</span>
         </Link>

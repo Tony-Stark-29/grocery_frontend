@@ -6,24 +6,26 @@ import { ProductCategoryCarousel } from "../features/shop/ProductCategoryCarouse
 import { Header } from "../features/header/Header";
 import { Outlet, useLocation } from "react-router-dom";
 export const Shop = () => {
+  const location = useLocation();
 
-  const location=useLocation();
-
-  const currPage=location.pathname.split("/").filter((path)=>path).pop();
+  const currPage = location.pathname
+    .split("/")
+    .filter((path) => path)
+    .pop();
 
   return (
-    <div className="containner-fluid  m-auto">
+    <div className="containner-fluid  m-auto ">
       <HeaderAdvertisement />
       <Header />
       <div className="d-flex flex-column align-items-center bg-light py-5 shadow-sm overflow-hidden ">
         <BreadcrumbNav />
-        {currPage==="shop" && <ProductCategoryCarousel />}
+        {currPage === "shop" && <ProductCategoryCarousel />}
       </div>
       <main
-        className="container-fluid my-3 bg-light rounded shadow-lg p-0  "
-        style={{ maxWidth: "1440px", margin: "auto" }}
+        className="container  my-3 bg-light rounded  p-0 overflow-hidden w-auto  "
+       
       >
-        <Outlet/>
+        <Outlet />
       </main>
       <Footer />
     </div>

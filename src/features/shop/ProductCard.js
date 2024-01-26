@@ -46,13 +46,7 @@ export const ProductCard = ({ item }) => {
           </h5>
         </div>
         <div className="col-4">
-          <button
-            className={`btn  product-cart-icon border fs-5 m-auto ${
-              item?.stock === 0 && "disabled"
-            }`}
-          >
-            <FontAwesomeIcon icon={faCartPlus} />
-          </button>
+          
         </div>
       </div>
     </div>
