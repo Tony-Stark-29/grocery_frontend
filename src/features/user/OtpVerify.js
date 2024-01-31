@@ -1,13 +1,17 @@
-import { clear } from "@testing-library/user-event/dist/clear";
 import React, { useEffect, useRef, useState } from "react";
 import loading_spinner_black from "../../resources/tube-spinner-black.svg";
+import { useUserContext } from "../../hooks/useUserContext";
+import { useNavigate } from "react-router-dom";
 
 export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
   const [otp, setOtp] = useState(new Array(length).fill(" "));
   const [showResend, setShowResend] = useState(false);
   const [timer, setTimer] = useState(0);
   const [isLoadindg, setIsLoading] = useState(false);
+  const { dispatch } = useUserContext();
+  const navigate = useNavigate();
   const [error, setError] = useState("");
+
   const inputRefs = useRef([]);
   console.log(otp);
 
@@ -58,21 +62,23 @@ export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
       inputRefs.current[index - 1].focus();
     }
   };
-  console.log(inputRefs);
-  console.log(timer);
 
-  const otpVerify = (e) => {
+  const otpVerify = async (e) => {
     e.preventDefault();
-    setIsLoading(false);
-    window.confirmationResult
-      .confirm(otp.join(""))
-      .then(async (res) => {
-        console.log(res);
-        setIsLoading(false);
-      })
-      .catch((error)=>{
-        console.log(error);
-      });
+    setIsLoading(true);
+    try {
+      const userCredential = await window.confirmationResult.confirm(
+        otp.join("")
+      );
+
+      if (userCredential?.user) {
+          navigate("/shop/myaccount");
+      }
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -102,9 +108,7 @@ export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
         {showResend && <small>Resend</small>}
       </div>
       <div>
-        <button className="btn btn-outline-success"
-        onClick={otpVerify}
-        >
+        <button className="btn btn-outline-success" onClick={otpVerify}>
           Verify
           {isLoadindg && (
             <img

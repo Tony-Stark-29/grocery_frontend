@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LoginForm } from "./LoginForm";
 import "./user.css";
+import { useUserContext } from "../../hooks/useUserContext";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const { isAuthenticated } = useUserContext();
+  const navigate = useNavigate();
+  useEffect(() => {
+   if (isAuthenticated) navigate("/shop/myaccount")
+  }, [isAuthenticated]);
+
   return (
     <div className="col-10 col-8-md col-lg-6 m-auto border border-3 rounded-3 overflow-hidden">
       <div className="row">
@@ -16,7 +24,6 @@ export const Login = () => {
         <div className="col-12 col-md-6 px-3">
           <LoginForm />
         </div>
-       
       </div>
     </div>
   );

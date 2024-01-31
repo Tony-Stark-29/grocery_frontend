@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+
 import { Home } from "./views/Home";
 import { Shop } from "./views/Shop";
 import { NotFound } from "./views/NotFound";
@@ -10,8 +11,9 @@ import { MyAccount } from "./features/user/MyAccount";
  
 import { LoginForm } from "./features/user/LoginForm";
 import { Login } from "./features/user/Login";
-
+ 
 function App() {
+
   return (
     <div className="App bg-light">
       <Routes>

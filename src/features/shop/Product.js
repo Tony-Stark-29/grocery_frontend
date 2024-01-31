@@ -18,7 +18,7 @@ import { ProductReview } from "./ProductReview";
 export const Product = () => {
   const { name: productName, id } = useParams();
   const params = useParams();
-  console.log(params);
+
   const { error, isLoading, requestApi } = useApi();
   const [product, setProduct] = useState(productInitialData);
 
@@ -26,7 +26,6 @@ export const Product = () => {
     requestApi(`/grocery/product/${productName || id}`, "GET", null)
       .then((data) => {
         setProduct((prev) => ({ ...prev, ...data?.product }));
-        console.log(data.product);
       })
       .catch((error) => console.log(error.message));
   }, []);
@@ -76,10 +75,11 @@ export const Product = () => {
               <small>
                 <strong>Tags : </strong>
                 {tags
-                  .map(
-                    (tag) =>
-                      tag.slice(0, 1).toUpperCase() + tag.slice(1, tag.length)
-                  )
+                  .map((tag, index) => (
+                    <span key={index}>
+                      {tag.slice(0, 1).toUpperCase() + tag.slice(1, tag.length)}
+                    </span>
+                  ))
                   .join(",")}
               </small>
             </div>
@@ -94,7 +94,7 @@ export const Product = () => {
             </strong>
           </h4>
           <div className="my-3">
-            <div class="progress w-75 " style={{ height: "6px" }}>
+            <div className="progress w-75 " style={{ height: "6px" }}>
               <div
                 className="progress-bar bg-danger w-25"
                 role="progressbar"
@@ -147,8 +147,8 @@ export const Product = () => {
           </div>
 
           <div className="text-success lh-sm mt-3">
-            {productChecks.map((content) => (
-              <p>
+            {productChecks.map((content,index) => (
+              <p key={index}>
                 <small>
                   <strong>
                     <FontAwesomeIcon className="mx-1  lh-sm" icon={faCheck} />
@@ -166,7 +166,7 @@ export const Product = () => {
           <p className="text-justify">{description}</p>
         </div>
         <div className="col-12 col-md-6 border border-left">
-              <ProductReview/>
+          <ProductReview />
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
-import { createContext, useReducer } from "react";
-
+import { createContext, useEffect, useReducer } from "react";
+import { auth } from "../config/firebaseConfig";
 const initialState = {
   user: null,
   isAuthenticated: false,
@@ -11,6 +11,7 @@ const UserReducer = (state, action) => {
     case "LOGIN":
       return { ...state, user: action.payload, isAuthenticated: true };
     case "LOGOUT":
+      auth.signOut();
       return { ...state, ...initialState };
 
     default:
@@ -20,6 +21,27 @@ const UserReducer = (state, action) => {
 
 export const UserContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
+      if (authUser) {
+        try {
+          const response = await fetch("/user/login", {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + authUser?.accessToken,
+            },
+          });
+          const userData = await response.json();
+          dispatch({ type: "LOGIN", payload: userData });
+        } catch (error) {
+          console.error("Error fetching user data from backend:", error);
+        }
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <UserContext.Provider value={{ ...state, dispatch }}>

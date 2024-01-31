@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { HeaderAdvertisement } from "../features/navigation/HeaderAdvertisement";
 import { Footer } from "../features/footer/Footer";
 import { BreadcrumbNav } from "../features/navigation/BreadCrumbNav";
@@ -21,10 +21,7 @@ export const Shop = () => {
         <BreadcrumbNav />
         {currPage === "shop" && <ProductCategoryCarousel />}
       </div>
-      <main
-        className="container  my-3 bg-light rounded  p-0 overflow-hidden w-auto  "
-       
-      >
+      <main className="container  my-3 bg-light rounded  p-0 overflow-hidden w-auto  ">
         <Outlet />
       </main>
       <Footer />
