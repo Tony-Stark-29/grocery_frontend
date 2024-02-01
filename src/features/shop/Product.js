@@ -45,6 +45,7 @@ export const Product = () => {
   if (isLoading) {
     return <ProductsShimmer />;
   }
+
   return (
     <section className="container-flex m-auto p-0 bg-white">
       <div className="row m-auto">
@@ -75,12 +76,11 @@ export const Product = () => {
               <small>
                 <strong>Tags : </strong>
                 {tags
-                  .map((tag, index) => (
-                    <span key={index}>
-                      {tag.slice(0, 1).toUpperCase() + tag.slice(1, tag.length)}
-                    </span>
-                  ))
-                  .join(",")}
+                  .map(
+                    (tag) =>
+                      tag.slice(0, 1).toUpperCase() + tag.slice(1, tag.length)
+                  )
+                  .join(" , ")}
               </small>
             </div>
           </div>
@@ -147,7 +147,7 @@ export const Product = () => {
           </div>
 
           <div className="text-success lh-sm mt-3">
-            {productChecks.map((content,index) => (
+            {productChecks.map((content, index) => (
               <p key={index}>
                 <small>
                   <strong>

@@ -1,64 +1,62 @@
 .delivery-container {
-
   padding: 3rem;
   border-radius: 20px;
   position: relative;
   background: radial-gradient(#fff4ec 20%, #f06b5434 80%);
 }
 
-.delivery-containe,.moto-container .btn-primary {
+.delivery-containe,
+.moto-container .btn-primary {
   border-color: #f06c54;
   background-color: var(--text-primary);
 }
 
-.delivery-container,.moto-container .btn-primary:hover,.btn-primary:active {
-   
+.delivery-container,
+.moto-container .btn-primary:hover,
+.btn-primary:active {
   color: #000;
   border-color: #f06c54;
   background-color: transparent;
 }
 
 .delivery-container img {
-
   max-height: 300px;
 }
 
-.moto-container
-{
-
-    
-    max-height: 100vh;
-    border-radius: 20px;
-    background:radial-gradient(#ffffffd3 10%,#a4d4bca0 80%);
-
-    
-}
- 
-
-.moto-container p
-{
-    
-    font-size: 0.8rem;
+.moto-container {
+  max-height: 100vh;
+  border-radius: 20px;
+  background: radial-gradient(#ffffffd3 10%, #a4d4bca0 80%);
 }
 
-.moto-container img
-{
-    
+.moto-container p {
+  font-size: 0.8rem;
+}
+
+.moto-container img {
+}
+
+.instagram-link-container {
+   
+   transform: translate(-50%,50%);
+   left: 50%;
+  color: #f06c54;
+  cursor: pointer;
+  background-color: #fff4ecc0;
+}
+
+.instagram-colleges > div img {
+  width: 220px;
+  height: 220px;
 }
 
 @keyframes blur-zoom-out {
-
-
-  0%
-  {
+  0% {
     opacity: 0;
     transform: scale(0.1);
   }
-  100%
-  {
+  100% {
     opacity: 1;
     transform: scale(1);
   }
-
-  
 }

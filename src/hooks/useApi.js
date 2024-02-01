@@ -11,10 +11,7 @@ export const useApi = () => {
     clearAll();
     try {
       setIsLoading(true);
-      console.log({
-        method: method || "GET",
-        body: JSON.stringify(body) || null,
-      });
+      
       const res = await fetch(url, {
         method: method || "GET",
         body: body ? JSON.stringify(body) : null,

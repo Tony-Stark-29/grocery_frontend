@@ -14,6 +14,19 @@ export const Footer = () => {
     <footer className="primary-footer container-flex text-light ">
       <div className="container">
         <div className="row m-auto align-items-center">
+        <div className="col-12 col-md-6 col-lg-3">
+            <nav className="navbar justify-content-center ">
+              <ul className="navbar-nav flex-column align-items-center align-items-lg-start m-2">
+                <li className="nav-items m-2">About us</li>
+                <li className="nav-items m-2">Cotnact us</li>
+                <li className="nav-items m-2">Refund Policy</li>
+                <li className="nav-items m-2">Shipping Policy</li>
+                <li className="nav-items m-2">Privacy Policy</li>
+                <li className="nav-items m-2">Terms & Condition</li>
+              </ul>
+               
+            </nav>
+          </div>
           <div className="col-12 col-md-12 col-lg-6 d-flex flex-column">
             <div className="text-center">
               Tasty
@@ -31,22 +44,7 @@ export const Footer = () => {
             </div>
             <div></div>
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
-            <nav className="navbar justify-content-center ">
-              <ul className="navbar-nav m-2">
-                <li className="nav-items m-2">Contacts</li>
-                <li className="nav-items m-2">Products</li>
-                <li className="nav-items m-2">Blog</li>
-                <li className="nav-items m-2">Services</li>
-              </ul>
-              <ul className="navbar-nav m-2">
-                <li className="nav-items m-2">Contacts</li>
-                <li className="nav-items m-2">Products</li>
-                <li className="nav-items m-2">Blog</li>
-                <li className="nav-items m-2">Services</li>
-              </ul>
-            </nav>
-          </div>
+         
           <div className="col-12 col-md-6 col-lg-3">
             <div className="media-links d-flex flex-row  align-items-center justify-content-evenly fs-3">
               <FontAwesomeIcon icon={faInstagram} />

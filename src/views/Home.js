@@ -10,6 +10,7 @@ import { Moto } from "../features/promotion/Moto";
 import { useApi } from "../hooks/useApi";
 import { useGroceryContext } from "../hooks/useGroceryContext";
 import { HomeShimmer } from "../features/shimmer/HomeShimmer";
+import { InstagramPics } from "../features/promotion/InstagramPics";
 
 export const Home = () => {
   const [showUi, setShowUi] = useState(false);
@@ -38,6 +39,8 @@ export const Home = () => {
             <Features />
             <Offer />
             <Moto />
+            <Delivery/>
+            <InstagramPics/>
           </main>
         </>
       )}

@@ -1,29 +1,77 @@
 import React, { useEffect } from "react";
 import { useUserContext } from "../../hooks/useUserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const MyAccount = () => {
-  const { dispatch:userContextDispatch,user } = useUserContext();
-  const navigate=useNavigate();
+  const { dispatch: userContextDispatch, user } = useUserContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
-
-    console.log("MyAccount - ",user);
-
+    console.log("MyAccount - ", user);
   }, [user]);
 
-  const handleLogOut=()=>{
-
-    userContextDispatch({type:"LOGOUT"});
+  const handleLogOut = () => {
+    userContextDispatch({ type: "LOGOUT" });
     navigate("/");
+  };
 
-
-
-  }
-
-  return <section>
-    <div className="row m-auto justify-content-end">
-      <button className="btn btn-outline-danger w-auto" onClick={handleLogOut}>Logout</button>
-    </div>
-  </section>;
+  return (
+    <section className="row m-auto p-0 border rounded-2">
+      <div className="col-12 col-lg-3 m-auto p-4 justify-content-center   border-end">
+        <div className="user-greet row m-auto align-items-center justify-content-center">
+          <div
+            className="  rounded-circle border p-3"
+            style={{ height: "70px", width: "70px" }}
+          >
+            <FontAwesomeIcon
+              className="display-6 w-auto m-auto"
+              icon={faUser}
+            />
+          </div>
+          <div className="w-75">
+            <span className="fw-lighter">Hello ,</span>
+          </div>
+        </div>
+        <nav className="navbar ">
+          <ul className="navbar-nav d-flex flex-column text-center text-lg-start  w-100">
+            <li className="nav-item">
+              <Link to={"dashboard"} className="nav-link">
+                {" "}
+                Dashboard{" "}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"orders"} className="nav-link">
+                {" "}
+                Orders{" "}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"addresses"} className="nav-link">
+                {" "}
+                Addresses{" "}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"account-details"} className="nav-link">
+                {" "}
+                Account Details{" "}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                <FontAwesomeIcon className="text-success" icon={faRightFromBracket} />{" "}
+                <span>Logout</span>{" "}
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div className="col-12 col-lg-9 m-auto p-4 align-items-start">
+        <Outlet />
+      </div>
+    </section>
+  );
 };

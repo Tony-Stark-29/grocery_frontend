@@ -53,7 +53,7 @@
 @media screen and (min-width:998px) {
 
   .hero-container > div > div {
-    min-height: 350px;
+    min-height:40vh;
   
   }
   

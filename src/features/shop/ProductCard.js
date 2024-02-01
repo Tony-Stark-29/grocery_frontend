@@ -1,8 +1,9 @@
 import React from "react";
 import "./shop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faIndianRupee } from "@fortawesome/free-solid-svg-icons";
+import {  faIndianRupee } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { AddToCart } from "../cart/AddToCart";
 
 export const ProductCard = ({ item }) => {
   return (
@@ -42,11 +43,11 @@ export const ProductCard = ({ item }) => {
       <div className="card-footer  bg-transparent border-0 d-flex flex-row align-items-center">
         <div className="col-8 text-success">
           <h5>
-            <FontAwesomeIcon icon={faIndianRupee} /> {item?.price}
+            <FontAwesomeIcon icon={faIndianRupee} stock={item?.stock} id={item?._id}  /> {item?.price}
           </h5>
         </div>
         <div className="col-4">
-          
+          <AddToCart stock={item?.stock} id={item?._id}  />
         </div>
       </div>
     </div>
