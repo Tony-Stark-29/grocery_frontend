@@ -10,7 +10,15 @@ export const CartContext = createContext();
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      return { ...state, cart: [...state.cart, action.payload] };
+
+      // const prodctExist=state.cart.find((item)=> item?._id===action.payload?._id);
+      // if(prodctExist)
+      // {
+      //   const modified=state.cart.map((item)=> item._id===action.payload?._id?{...item,quantity:item.quantity+1}:item)
+      //   return {...state,cart:modified}
+      // }
+      console.log(action.payload);
+      return { ...state, cart:action.payload};
 
     case "SUB_TOTAL":
       return { ...state, subTotal: action.payload };
@@ -33,6 +41,7 @@ export const CartContextProvider = ({ children }) => {
     dispatch({type:"SUB_TOTAL",payload:total});
   },[state.cart]);
 
+   
   return (
     <CartContext.Provider value={{ ...state, dispatch }}>
       {children}

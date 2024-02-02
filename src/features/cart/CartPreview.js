@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const CartPreview = () => {
   const { subTotal, cart, dispatch: cartDispatch } = useCartContext();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   console.log(cart);
   return (
@@ -17,24 +17,34 @@ export const CartPreview = () => {
       <div className="card-body">
         {cart &&
           cart.slice(0, 2).map((item) => (
-            <div className="row m-auto my-2  fs-6   border-bottom align-items-center">
-              <div key={item?._id} className="col-4">
-                <img
-                  className="img-fluid my-3"
-                  src={item?.imageUrl}
-                  alt="product"
-                  style={{ minHeight: "50px", minWidth: "50px" }}
-                />
+            <div
+              key={item?._id}
+              className="row m-auto my-1  fs-6   border-bottom align-items-center"
+            >
+              <div className="col-4 px-2">
+                <div className="row m-auto p-0">
+                  <img
+                    className="img-thumbnail my-3"
+                    src={item?.imageUrl}
+                    alt="product"
+                    style={{ minHeight: "50px", minWidth: "50px" }}
+                  />
+                </div>
               </div>
               <div className="col-8">
                 <div className="row m-auto -bolder ">
-                  <div className="col-6"> {item?.name}</div>
-                  <div className="col-6">
+                  <div className="col-8">
+                    <div className="row m-auto">
+                      <small>{item?.name}</small>
+                    </div>
+                    <small>
+                      <FontAwesomeIcon icon={faIndianRupee} /> {item?.price}{" "}
+                    </small>
+                  </div>
+                  <div className="col-4 d-flex flex-colum align-items-center justify-content-center">
                     <small className="text-success">
-                      {item?.quantity} <span>X</span>
-                      <span>
-                        <FontAwesomeIcon icon={faIndianRupee} /> {item?.price}{" "}
-                      </span>
+                      <span>X</span>
+                      {item?.quantity}
                     </small>
                   </div>
                 </div>
@@ -48,8 +58,13 @@ export const CartPreview = () => {
           <FontAwesomeIcon icon={faIndianRupee} /> {subTotal}
         </div>
       </div>
-      <div className="mt-auto">
-        <button className="btn btn-outline-success m-1" onClick={()=>navigate("/shop/cart")} >See All </button>
+      <div className="  my-2">
+        <button
+          className="btn btn-outline-success m-1"
+          onClick={() => navigate("/shop/cart")}
+        >
+          See All{" "}
+        </button>
         <button className="btn btn-warning m-1">Checkout </button>
       </div>
     </>

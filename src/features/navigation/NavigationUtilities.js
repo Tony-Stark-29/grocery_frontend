@@ -10,7 +10,10 @@ import "./navigation.css";
 import { CartPreview } from "../cart/CartPreview";
 import { Link } from "react-router-dom";
 import { CartModal } from "../cart/CartModal";
+import { useCartContext } from "../../hooks/useCartContext";
 export const NavigationUtilities = () => {
+
+  const {cart}=useCartContext();
   return (
     <div className="action-container row  m-auto text-center  collape navbar-collapse fs-5">
       <div className="nav-dropdown-container  col d-none d-xl-block ">
@@ -28,12 +31,12 @@ export const NavigationUtilities = () => {
       <div className="nav-dropdown-container col  d-none d-lg-block ">
         <FontAwesomeIcon className=" link-scale " icon={faCartShopping} />
         <small
-          className="badge badge-danger bg-danger position-absolute top-fixed rounded-circle"
+          className="badge badge-danger bg-danger position-absolute top-fixed rounded-circle px-1 text-center"
           style={{ fontSize: "10px", top: "-1px" }}
         >
-          1
+          {cart.length}
         </small>
-        <div className="nav-dropdown-card card shadow">
+        <div className="nav-dropdown-card card shadow pb-2">
           <CartPreview />
         </div>
       </div>

@@ -14,6 +14,8 @@ import { ProductsShimmer } from "../shimmer/ProductsShimmer";
 import { productInitialData } from "../../constants/data";
 import { productChecks } from "../../constants/grocery";
 import { ProductReview } from "./ProductReview";
+import { AddtoWhishListBtn } from "../whishList/AddtoWhishListBtn";
+import { AddToCart } from "../cart/AddToCart";
 
 export const Product = () => {
   const { name: productName, id } = useParams();
@@ -118,8 +120,8 @@ export const Product = () => {
               </div>
             </div>
           </div>
-          <div className="action mt-lg-4 mb-3">
-            <div className="btn-group   overflow-hidden ">
+          <div className="action row m-auto mt-lg-4 mb-3 align-items-center ">
+            <div className="btn-group w-auto m-auto overflow-hidden">
               <button className="btn btn-outline-dark ">
                 <FontAwesomeIcon icon={faMinus} />
               </button>
@@ -130,16 +132,18 @@ export const Product = () => {
                 <FontAwesomeIcon icon={faAdd} />
               </button>
             </div>
-            <button className="btn btn-outline-dark rounded-5 px-5 mx-3">
-              Add to Cart
-            </button>
-            <button className="btn btn-outline-dark rounded-5 ">
-              <FontAwesomeIcon icon={faHeart} />{" "}
+            <div className="  w-auto m-auto ">
+              <AddToCart   content={"Add To Cart"} />
+            </div>
+            <div className="col text-center">
+              <AddtoWhishListBtn />
+            </div>
+          </div>
+          <div className="row m-auto">
+            <button className="btn btn-outline-dark rounded-5 px-5 w-50 my-3">
+              Buy
             </button>
           </div>
-          <button className="btn btn-outline-dark rounded-5 px-5 w-50 my-3">
-            Buy
-          </button>
 
           <div className="border border-success badge badge-success bg-light rounded px-2 py-3 w-auto text-success">
             <FontAwesomeIcon icon={faStopwatch} className="mx-2" />

@@ -61,7 +61,7 @@ export const MyAccount = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/" onClick={handleLogOut}>
                 <FontAwesomeIcon className="text-success" icon={faRightFromBracket} />{" "}
                 <span>Logout</span>{" "}
               </Link>

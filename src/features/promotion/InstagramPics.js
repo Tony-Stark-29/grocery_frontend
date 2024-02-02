@@ -11,7 +11,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export const InstagramPics = () => {
   return (
-    <section className="instagram-colleges  p-0">
+    <section className="instagram-colleges  p-0 overflow-hidden">
       <div className="row p-0 m-auto position-relative">
         <div className="col-6 col-lg-2 p-0 m-0">
           <img className="" src={apple} alt="" />

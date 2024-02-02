@@ -1,0 +1,25 @@
+
+
+.btn-liked-success
+{
+    width: 40px;
+    height: 40px;
+    color: #23403d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid #23403d;
+    transition: all 300ms ease-in-out;
+}
+.btn-liked-success:hover
+{
+    color: #fff;
+    background-color: #23403d;
+}
+.btn-liked-success:active
+{
+     background-color: transparent;
+     color: #23403d;
+}
+ 

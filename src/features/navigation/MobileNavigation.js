@@ -3,10 +3,12 @@ import { NavItems } from "./NavItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../hooks/useCartContext";
  
 
 export const MobileNavigation = () => {
   
+   
   return (
     <div
       className="offcanvas d-block d-lg-none offcanvas-start mobile-only-navigation bg-dark"

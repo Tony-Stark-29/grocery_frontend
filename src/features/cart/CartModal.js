@@ -2,7 +2,10 @@ import React from "react";
 import { CartPreview } from "./CartPreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useCartContext } from "../../hooks/useCartContext";
 export const CartModal = () => {
+
+  const {cart}=useCartContext();
   return (
     <div className="  col ">
       <div
@@ -15,7 +18,7 @@ export const CartModal = () => {
           className="badge badge-danger bg-danger position-absolute top-fixed rounded-circle"
           style={{ fontSize: "10px", top: "-1px" }}
         >
-          1
+        {cart.length}
         </small>
       </div>
 
