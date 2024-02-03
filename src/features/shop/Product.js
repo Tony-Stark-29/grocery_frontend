@@ -133,7 +133,7 @@ export const Product = () => {
               </button>
             </div>
             <div className="  w-auto m-auto ">
-              <AddToCart   content={"Add To Cart"} />
+              <AddToCart  id={id} content={"Add To Cart"} />
             </div>
             <div className="col text-center">
               <AddtoWhishListBtn />

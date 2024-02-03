@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../resources/logo-hamper.png";
+import logo from "../../resources/icons/favicon.ico";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { NavItems } from "./NavItems";
@@ -7,7 +7,7 @@ import { NavigationUtilities } from "./NavigationUtilities";
 
 export const PrimaryNavigation = () => {
   return (
-    <div className="row m-auto  text-light align-items-center justify-content-between p-2 px-lg-1 py-lg-3 ">
+    <div className=" row m-auto  text-light align-items-center justify-content-between p-2 ">
       <div className="d-block d-lg-none col-2">
         <button
           className="navbar-toggler"

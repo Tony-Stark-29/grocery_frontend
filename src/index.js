@@ -15,11 +15,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <GroceryContextProvider>
-        <CartContextProvider>
-          <UserContextProvider>
+        <UserContextProvider>
+          <CartContextProvider>
             <App />
-          </UserContextProvider>
-        </CartContextProvider>
+          </CartContextProvider>
+        </UserContextProvider>
       </GroceryContextProvider>
     </BrowserRouter>
   </React.StrictMode>

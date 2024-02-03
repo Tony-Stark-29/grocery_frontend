@@ -1,6 +1,14 @@
-.primary-footer .media-links > *:hover
-{
-    transition:all 300ms ease-in-out ;
-    transform: scale(1.2);
-    color: var(--text-primary);
+.primary-footer .media-links > *:hover {
+  transition: all 300ms ease-in-out;
+  transform: scale(1.2);
+  color: var(--text-primary);
+}
+
+.footer-heading,.media-links {
+  color: #00d783;
+}
+
+.primary-footer {
+  background-color: #15211a;
+  color: #6a9c8c;
 }

@@ -7,15 +7,14 @@ import { useNavigate } from "react-router-dom";
 export const CartPreview = () => {
   const { subTotal, cart, dispatch: cartDispatch } = useCartContext();
   const navigate = useNavigate();
-
-  console.log(cart);
+ 
   return (
     <>
       <div className="card-header">
         <div className="card-title">Cart Preview</div>
       </div>
       <div className="card-body">
-        {cart &&
+        {cart?.length > 0 &&
           cart.slice(0, 2).map((item) => (
             <div
               key={item?._id}

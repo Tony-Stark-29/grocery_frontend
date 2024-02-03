@@ -11,43 +11,46 @@ import loading_spinner from "../../resources/tube-spinner-black.svg";
 
 export const AddToCart = ({ content = "", stock, id }) => {
   const { cart, dispatch: cartDispatch } = useCartContext();
-  const { error, isLoading, requestApi}=useApi();
+  const { error, isLoading, requestApi } = useApi();
   const { products } = useGroceryContext();
-  const currentUser=auth.currentUser;
-  console.log(currentUser?.accessToken)
 
-  const handleAddToCart =async (id) => {
-    console.log(id);
-    const itemToAdd = products?.find((item) => item?._id === id);
-    console.log(itemToAdd);
+  const handleAddToCart = async (id) => {
+    const itemToAdd = products.find((item) => item?._id === id);
+
     const payload = {
-      _id: itemToAdd?._id,
-      name: itemToAdd?.name,
-      price: itemToAdd?.price,
+      _id: itemToAdd._id,
+      name: itemToAdd.name,
+      price: itemToAdd.price,
       quantity: 1,
-      imageUrl: itemToAdd?.imageUrl,
+      imageUrl: itemToAdd.imageUrl,
     };
-    const item={
-      _id:itemToAdd?._id,
-      quantity:1,
-    }
+    const item = {
+      _id: itemToAdd?._id,
+      quantity: 1,
+    };
 
-    const res=await requestApi("/user/cart","POST",{item});
-    cartDispatch({ type: "ADD_TO_CART", payload });
+    if (auth.currentUser) {
+      const res = await requestApi("/user/cart", "POST", { item });
+    }
+    cartDispatch({ type: "UPDATE_CART", payload });
     toast.success("Item Added to cart");
   };
 
   return (
     <>
       <button
-        className="btn-cart-success rounded-5 px-2"
+        
+        className="btn-cart-success rounded-5 px-2 "
         onClick={() => handleAddToCart(id)}
       >
-        {isLoading && <img src={loading_spinner} className="img-fluid" /> }
-        {!isLoading && content ? content : <FontAwesomeIcon icon={faCartPlus} /> }
-        
+        {isLoading && <img src={loading_spinner} className="img-fluid" />}
+        {!isLoading && content ? (
+          content
+        ) : (
+          <FontAwesomeIcon icon={faCartPlus} />
+        )}
       </button>
-      <Toaster />
+      <Toaster containerClassName="container" />
     </>
   );
 };

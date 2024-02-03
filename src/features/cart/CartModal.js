@@ -18,7 +18,7 @@ export const CartModal = () => {
           className="badge badge-danger bg-danger position-absolute top-fixed rounded-circle"
           style={{ fontSize: "10px", top: "-1px" }}
         >
-        {cart.length}
+        {cart?.length || 0}
         </small>
       </div>
 

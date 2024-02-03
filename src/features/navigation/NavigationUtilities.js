@@ -34,7 +34,7 @@ export const NavigationUtilities = () => {
           className="badge badge-danger bg-danger position-absolute top-fixed rounded-circle px-1 text-center"
           style={{ fontSize: "10px", top: "-1px" }}
         >
-          {cart.length}
+          {cart?.length}
         </small>
         <div className="nav-dropdown-card card shadow pb-2">
           <CartPreview />

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../resources/logo-hamper.png";
+import logo from "../../resources/icons/app-icon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -11,11 +11,11 @@ import "./footer.css";
 
 export const Footer = () => {
   return (
-    <footer className="primary-footer container-flex text-light ">
+    <footer className="primary-footer container-flex  ">
       <div className="container">
         <div className="row m-auto align-items-center">
-        <div className="col-12 col-md-6 col-lg-3">
-            <nav className="navbar justify-content-center ">
+          <div className="col-12 col-md-6 col-lg-3">
+            <nav className="navbar justify-content-center justify-content-lg-start ">
               <ul className="navbar-nav flex-column align-items-center align-items-lg-start m-2">
                 <li className="nav-items m-2">About us</li>
                 <li className="nav-items m-2">Cotnact us</li>
@@ -24,17 +24,18 @@ export const Footer = () => {
                 <li className="nav-items m-2">Privacy Policy</li>
                 <li className="nav-items m-2">Terms & Condition</li>
               </ul>
-               
             </nav>
           </div>
-          <div className="col-12 col-md-12 col-lg-6 d-flex flex-column">
-            <div className="text-center">
+          <div className="col-12 col-md-12 col-lg-6 d-flex flex-column ">
+            <div
+              className="footer-heading fs-3 fw-bolder text-center my-3"
+            >
               Tasty
-              <img src={logo} alt="" />
+              <img src={logo} className="img-fluid " alt="" />
               Daily
             </div>
             <div>
-              <p className="text-justify" style={{ textAlign: "justify" }}>
+              <p className="text-center">
                 We're Tasty Daily Shop, an innovative team of food engineers.
                 Our unique model minimizes fresh food handling by up to 85%,
                 sourcing locally and dispatching within hours through cold chain
@@ -44,7 +45,7 @@ export const Footer = () => {
             </div>
             <div></div>
           </div>
-         
+
           <div className="col-12 col-md-6 col-lg-3">
             <div className="media-links d-flex flex-row  align-items-center justify-content-evenly fs-3">
               <FontAwesomeIcon icon={faInstagram} />

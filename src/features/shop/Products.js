@@ -16,7 +16,7 @@ export const Products = () => {
     requestApi(`/grocery/products/${currentPage}`, "GET", null).then((data) => {
       groceryDispatch({ type: "SET_PRODUCTS", payload: data?.products });
     });
-  }, [currentPage]);
+  },[currentPage]);
 
   if (isLoading) {
     return <ProductsShimmer />;
@@ -28,7 +28,7 @@ export const Products = () => {
         <div className="row m-0 p-0 border-bottom justify-content-between">
           {products && (
             <div className="col-6 col-md-3 px-1 py-2 fw-lighter">
-              Showing {products.length} of 100
+              Showing {products?.length} of 100
             </div>
           )}
           <div className="col-6 col-md-3">
@@ -42,9 +42,9 @@ export const Products = () => {
           </div>
         </div>
         <div className="col-12 d-flex flex-row flex-wrap p-0">
-          {products.length > 0 &&
+          {products?.length > 0 &&
             products.map((item) => <ProductCard key={item._id} item={item} />)}
-          {!products.length > 0 &&
+          {!products?.length > 0 &&
             <div className="m-auto py-3 text-danger " > No Products available to show </div> }
         </div>
         {error && <div className="w-auto m-auto">{error}</div>  }

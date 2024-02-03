@@ -3,11 +3,15 @@ import "./offer.css";
 import offer_header_image from "../../resources/family-3d-vector.jpg";
 
 import { ProductCard } from "../shop/ProductCard";
-import { products } from "../../constants/data";
+ 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight, faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useGroceryContext } from "../../hooks/useGroceryContext";
 
 export const Offer = () => {
+
+  const {products} =useGroceryContext();
+
   return (
     <section
       className="offer-container   bg-light  overflow-hidden shadow shadow-md my-3 p-0 "
@@ -43,7 +47,7 @@ export const Offer = () => {
           </div>
         </div>
 
-        {products.slice(0, 6).map((item) => (
+        {products.length>0 && products.slice(0, 6).map((item) => (
           <ProductCard key={item._id} item={item} />
         ))}
       </div>

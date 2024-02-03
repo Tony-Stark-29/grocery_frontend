@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { auth } from "../config/firebaseConfig";
+import { useState } from "react";
+
 import useFirebaseAuthToken from "./useFirebaseAuthToken";
 
 export const useApi = () => {

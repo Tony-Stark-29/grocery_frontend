@@ -31,25 +31,8 @@ export const Cart = () => {
   const couponAccordin = useRef(null);
   const { cart, subTotal ,dispatch} = useCartContext();
   const [accordinIcon, setAccordinIcon] = useState(angleDown);
-  const {requestApi}=useApi();
 
-  useEffect(()=>{
-
-    const getCartItems=async()=>{
-     const items=await  requestApi("/user/cart","GET")
-     console.log(items.cartItems);
- 
-    if(items)
-    {
-     dispatch({type:"ADD_TO_CART",payload:items?.cartItems})
-    }
-   }
-
-    getCartItems();
   
-
-
-  },[])
   const toggleAccordin = () => {
     couponAccordin.current.classList.toggle("show");
   };

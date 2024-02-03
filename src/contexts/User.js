@@ -33,7 +33,8 @@ export const UserContextProvider = ({ children }) => {
             },
           });
           const userData = await response.json();
-          dispatch({ type: "LOGIN", payload: userData });
+          console.log("UserData",userData.user);
+          dispatch({ type: "LOGIN", payload: userData?.user  });
         } catch (error) {
           console.error("Error fetching user data from backend:", error);
         }

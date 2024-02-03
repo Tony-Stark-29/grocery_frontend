@@ -19,8 +19,8 @@ export const MyAccount = () => {
 
   return (
     <section className="row m-auto p-0 border rounded-2">
-      <div className="col-12 col-lg-3 m-auto p-4 justify-content-center   border-end">
-        <div className="user-greet row m-auto align-items-center justify-content-center">
+      <div className="col-12 col-lg-3  p-4 border-end">
+        <div className="user-greet d-flex flex-column flex-lg-row m-auto align-items-center justify-content-center">
           <div
             className="  rounded-circle border p-3"
             style={{ height: "70px", width: "70px" }}
@@ -31,7 +31,7 @@ export const MyAccount = () => {
             />
           </div>
           <div className="w-75">
-            <span className="fw-lighter">Hello ,</span>
+            <span className="fw-lighter">Hello ,{user?.display_name}</span>
           </div>
         </div>
         <nav className="navbar ">
@@ -69,7 +69,7 @@ export const MyAccount = () => {
           </ul>
         </nav>
       </div>
-      <div className="col-12 col-lg-9 m-auto p-4 align-items-start">
+      <div className="col-12 col-lg-9 p-4 align-self-start">
         <Outlet />
       </div>
     </section>

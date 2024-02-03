@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Ubuntu+Mono:wght@400;700&display=swap");
 
 :root {
-  --navbar-primary: #23403d;
+  --navbar-primary: #15211a;
   --navbar-text-primary: #f06c54;
   --background-primary: #fff4ec;
-  --footer-primary: #28443c;
+  --footer-primary: #15211a;
   --text-primary: #f06c54;
 }
 
@@ -75,71 +75,11 @@ a:active {
 
 /* mobile only navigation start */
 
-.mobile-only-navigation
-{ 
- 
-  background-color: var(--navbar-primary);
 
-}
 
 /* mobile only navigation end*/
 
-
-/*Hero Component start*/
-
-.hero-container {
-  min-height: 20vh;
-}
-
-.hero-container h3 {
-  text-align: left;
-  text-shadow: 2px 2px 10px 1px #000;
-  font-weight: 700;
-}
-
-.hero-card {
-  color: #fff;
-  margin: 5px;
-}
-.hero-card:nth-of-type(1) {
  
-  background: url("https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fwatermelon-2367029_1280.jpg?alt=media&token=bc376e91-09c1-40cf-b02e-a2b616e10167")
-    center/cover;
-    
-}
-.hero-card:nth-of-type(3) {
-  background: url("https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fvegetables-752153_1280.jpg?alt=media&token=13b5f76a-61bd-44a0-8b85-8207a39aa579")
-    center/cover;
-}
-.hero-card:nth-of-type(2) {
-  color: var(--navbar-primary);
-  background: url("https://firebasestorage.googleapis.com/v0/b/grocery-mern-app.appspot.com/o/grocery_app_uploads%2Fimages%2Fclose-up-organic-milk-with-gourmet-cheese.jpg?alt=media&token=0d173ea1-4132-4d77-bcee-ebe1a76a3fdd")
-    center/cover;
-}
-
-.hero-align-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.hero-container .btn-primary {
-  border-color: #f06c54;
-  background-color: var(--text-primary);
-}
-
-.hero-container .btn-primary:hover {
-  color: #000;
-  border-color: #f06c54;
-  background-color: transparent;
-}
-.hero-container .btn-primary:active {
-  border-color: #f06c54;
-  background-color: transparent;
-}
-
-/*Hero Component end*/
-
 /*Features start*/
 
 .feature-card > div:nth-of-type(1) {
