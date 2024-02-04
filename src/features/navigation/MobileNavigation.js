@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../resources/icons/favicon.ico";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,6 +18,7 @@ import {
 import "./navigation.css";
 
 export const MobileNavigation = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="mobile-only-navigation offcanvas   d-block d-lg-none offcanvas-start text-light "
@@ -124,21 +125,20 @@ export const MobileNavigation = () => {
           </ul>
         </nav>
         <div className="d-flex flex-row fw-bolder   py-3 align-items-center justify-content-evenly">
-          <Link data-bs-dismiss="offcanvas" to="/shop/myaccount">
+          <Link to="/shop/myaccount">
             <FontAwesomeIcon className="fa-icons fs-3" icon={faUser} />
           </Link>
-          <Link data-bs-dismiss="offcanvas" to="/shop/cart">
+          <Link to="/shop/cart">
             <FontAwesomeIcon className="fa-icons fs-3" icon={faShoppingCart} />
           </Link>
-          <Link data-bs-dismiss="offcanvas" to="/shop/liked-items">
+          <Link to="/shop/liked-items">
             <FontAwesomeIcon className="fa-icons fs-3" icon={faHeart} />
           </Link>
-          <Link data-bs-dismiss="offcanvas" to="/">
-            {" "}
+          <Link to="/">
             <FontAwesomeIcon
               className="text-danger fs-3"
               icon={faRightFromBracket}
-            />{" "}
+            />
           </Link>
         </div>
       </div>

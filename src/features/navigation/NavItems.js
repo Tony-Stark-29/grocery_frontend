@@ -8,6 +8,7 @@ import {
   faDrumstickBite,
   faCow
 } from "@fortawesome/free-solid-svg-icons";
+import "./navigation.css";
 
 export const NavItems = () => {
   return (

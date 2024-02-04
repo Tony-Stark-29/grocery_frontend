@@ -30,8 +30,8 @@ export const MyAccount = () => {
               icon={faUser}
             />
           </div>
-          <div className="w-75">
-            <span className="fw-lighter">Hello ,{user?.display_name}</span>
+          <div className="w-75 text-center">
+            <span className="fw-bolder">Hello ,{user?.display_name}</span>
           </div>
         </div>
         <nav className="navbar ">

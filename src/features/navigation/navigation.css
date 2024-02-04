@@ -38,7 +38,8 @@
 }
 
  
-.mobile-only-navigation a{
+.mobile-only-navigation a,.primary-navigation a{
 
   color: #fff;
 }
+ 

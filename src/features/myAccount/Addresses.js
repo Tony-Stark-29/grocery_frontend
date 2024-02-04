@@ -2,25 +2,30 @@ import React, { useEffect, useState } from "react";
 import { AddressForm } from "./AddressForm";
 import { useUserContext } from "../../hooks/useUserContext";
 
+import toast, { Toaster } from "react-hot-toast";
+
 export const Addresses = () => {
+  const { user } = useUserContext();
   const [showAddressForm, setShowAddressForm] = useState(false);
+  const [billingAddress, setBillingAddress] = useState(null);
+  const [shippingAddress, setShippingAddress] = useState(null);
+  const [formData, setFormData] = useState(null);
 
-  const [billingAddress,setBillingAddress]=useState('');
-  const [shippingAddress,setShippingAddress]=useState('');
+  useEffect(() => {
+    setBillingAddress(user?.billing_address);
+    setShippingAddress(user?.shipping_address);
+  }, [user]);
 
-  const {user}=useUserContext();
-  useEffect(()=>{
+  const editShippingAddress = () => {
+    setFormData({ type: "Shipping Address", data: shippingAddress });
+    setShowAddressForm(true);
+  };
 
-    if(user?.shippingAddress)
-    {
-      setShippingAddress(user?.shippingAddress)
-    }
-    if(user?.billingAddress)
-    {
-      setBillingAddress(user?.billingAddress)
-    }
+  const editBillingAddress = () => {
+    setFormData({ type: "Billing Address", data: billingAddress });
+    setShowAddressForm(true);
+  };
 
-  },[user])
   return (
     <div className="row m-auto p-0">
       {!showAddressForm && (
@@ -35,20 +40,57 @@ export const Addresses = () => {
             <div className="row m-auto">
               <div className="col-12 col-lg-6">
                 <h3>Billing Address</h3>
-                <p>No address available</p>
-                <button className="btn btn-outline-warning">Edit</button>
+                {!user?.billing_address && <p>No address available</p>}
+                {user?.billing_address && (
+                  <div className="row m-auto lh-1 p-2">
+                    <p>{billingAddress?.name}</p>
+                    <p>{billingAddress?.street},</p>
+                    <p>{billingAddress?.area},</p>
+                    <p>{billingAddress?.city},</p>
+                    <p>
+                      {billingAddress?.state + "," + billingAddress?.pin_code},
+                    </p>
+                    <p>{billingAddress?.country}.</p>
+                  </div>
+                )}
+
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={editBillingAddress}
+                >
+                  Edit
+                </button>
               </div>
               <div className="col-12 col-lg-6">
                 <h3>Shipping Address</h3>
-                <p>No address available</p>
-                <button className="btn btn-outline-warning" onClick={()=>setShowAddressForm(true)}>Edit</button>
+                {!user?.shipping_address && <p>No address available</p>}
+                {user?.shipping_address && (
+                  <div className="row m-auto lh-1 p-2">
+                    <p>{shippingAddress?.name}</p>
+                    <p>{shippingAddress?.street},</p>
+                    <p>{shippingAddress?.area},</p>
+                    <p>{shippingAddress?.city},</p>
+                    <p>
+                      {shippingAddress?.state + "," + shippingAddress?.pin_code},
+                    </p>
+                    <p>{shippingAddress?.country}.</p>
+                  </div>
+                )}
+                <button
+                  className="btn btn-outline-warning"
+                  onClick={editShippingAddress}
+                >
+                  Edit
+                </button>
               </div>
             </div>
           </div>
         </>
       )}
-
-      {showAddressForm && <AddressForm setShow={setShowAddressForm}  />}
+      <Toaster />
+      {showAddressForm && (
+        <AddressForm setShow={setShowAddressForm} formData={formData} />
+      )}
     </div>
   );
 };

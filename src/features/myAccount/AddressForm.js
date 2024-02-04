@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { State, City } from "country-state-city";
 import { useUserContext } from "../../hooks/useUserContext";
+import { useApi } from "../../hooks/useApi";
 
-export const AddressForm = ({setShow}) => {
+export const AddressForm = ({ setShow, formData }) => {
+  const { user } = useUserContext();
 
-  const {user}=useUserContext();
-
-  console.log(user );
   const [statesInIndia, setStatesInindia] = useState(
     State.getStatesOfCountry("IN")
   );
   const [citiesInState, setCitiesInState] = useState([]);
+  const { isLoading, error, requestApi } = useApi();
 
   //form data start
   const [firstName, setFirstName] = useState("");
-  const [lastName, setlastName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [streetDetails, setStreetDetails] = useState("");
   const [areaDetails, setAreaDetails] = useState("");
@@ -22,17 +22,88 @@ export const AddressForm = ({setShow}) => {
   const [stateSelected, setStateSelected] = useState("");
   const [citySelected, setCitySelected] = useState("");
   const [pinCode, setPinCode] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(user?.phone_number||"");
+  const [phoneNumber, setPhoneNumber] = useState(user?.phone_number || "");
   const [email, setEmail] = useState("");
 
-  //form data end
+  useEffect(() => {
+    console.log(formData.data);
+    if (formData?.data) {
+      const {
+        name,
+        street,
+        area,
+        city,
+        state,
+        country,
+        pin_code,
+        phone_number,
+        email,
+      } = formData?.data;
+      setFirstName(name.split(" ").slice(0, 1));
+      setLastName(name.split(" ").slice(-1));
+      setStreetDetails(street);
+      setAreaDetails(area);
+      setCitySelected(city);
+      setStateSelected(state);
+      setCountrySelected(country);
+      setPhoneNumber(phone_number);
+      setPinCode(pin_code);
+      setEmail(email);
+    }
+  }, []);
+
+  useEffect(() => {
+    const stateCode = statesInIndia.find(
+      (state) => state.name === stateSelected
+    )?.isoCode;
+
+    setCitiesInState(City.getCitiesOfState("IN", stateCode));
+  }, [stateSelected]);
+
   const handleStateSelection = (e) => {
     const state = statesInIndia.find((state) => state.name === e.target.value);
     setStateSelected(state.name);
     setCitiesInState(City.getCitiesOfState("IN", state.isoCode));
   };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+
+    const data = {
+      name: firstName + " " + lastName,
+      phone_number: phoneNumber,
+      email: email,
+      street: streetDetails,
+      area: areaDetails,
+      city: citySelected,
+      state: stateSelected,
+      pin_code: pinCode,
+      country: countrySelected,
+    };
+    if (formData?.type === "Billing Address") {
+      requestApi("/user/user-details", "PUT", { billing_address: data }).then((data)=>{
+        if(!data.error)
+        {
+          setShow(false)
+        }
+      })
+    }
+    if (formData?.type === "Shipping Address") {
+      requestApi("/user/user-details", "PUT", { shipping_address: data }).then((data)=>{
+        
+        if(!data.error)
+        {
+          setShow(false)
+        }
+      })
+    }
+  };
+
   return (
     <form className="row d-flex " action="">
+      <div className="row">
+        <h3>{formData?.type}</h3>
+      </div>
       <div className="col-12 col-lg-6">
         <div className="form-group">
           <label htmlFor="first-name" className="fw-lighter my-2">
@@ -61,7 +132,7 @@ export const AddressForm = ({setShow}) => {
             required
             tabIndex={2}
             value={lastName}
-            onChange={(e) => setlastName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -83,7 +154,12 @@ export const AddressForm = ({setShow}) => {
             <label htmlFor="country" className="fw-lighter my-2">
               <small>Country \ Region *</small>
             </label>
-            <input type="text" id="company-name" value={countrySelected} className="form-control" />
+            <input
+              type="text"
+              id="company-name"
+              value={countrySelected}
+              className="form-control"
+            />
           </fieldset>
         </div>
         <div className="form-group">
@@ -144,7 +220,7 @@ export const AddressForm = ({setShow}) => {
             tabIndex={6}
           >
             {citiesInState.length > 0 &&
-              citiesInState.map((state,index) => (
+              citiesInState.map((state, index) => (
                 <option key={index} value={state?.name}>
                   {state?.name}
                 </option>
@@ -197,11 +273,16 @@ export const AddressForm = ({setShow}) => {
           <button
             tabIndex={10}
             className="btn btn-outline-success w-auto m-auto rounded-5 px-4 py-1"
-            onClick={()=>setShow(false)}
+            type="submit"
+            onClick={handleSubmitForm}
+            disabled={isLoading}
           >
             Save
           </button>
         </div>
+        {error && (
+          <div className="row text-center text-warning fw-lighter">{error}</div>
+        )}
       </div>
     </form>
   );

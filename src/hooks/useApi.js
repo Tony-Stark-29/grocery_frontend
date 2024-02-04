@@ -4,10 +4,10 @@ import useFirebaseAuthToken from "./useFirebaseAuthToken";
 
 export const useApi = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   const accessToken = useFirebaseAuthToken();
-
+   
   const clearAll = () => {
     setIsLoading(false);
     setError("");
@@ -27,7 +27,8 @@ export const useApi = () => {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(res.error);
+        setError(data.error);
+        console.log("Error : ",data.error);
       }
       return data;
     } catch (error) {

@@ -7,44 +7,22 @@ import { Footer } from "../features/footer/Footer";
 import { Offer } from "../features/offers/Offer";
 import { Delivery } from "../features/promotion/Delivery";
 import { Moto } from "../features/promotion/Moto";
-import { useApi } from "../hooks/useApi";
-import { useGroceryContext } from "../hooks/useGroceryContext";
-import { HomeShimmer } from "../features/shimmer/HomeShimmer";
 import { InstagramPics } from "../features/promotion/InstagramPics";
 
 export const Home = () => {
-  const [showUi, setShowUi] = useState(false);
-  const { error, isLoading, requestApi } = useApi();
-  const { dispatch: groceryDispatch } = useGroceryContext();
-
-  useEffect(() => {
-    requestApi("/grocery/products", "GET", null).then((data) => {
-      groceryDispatch({ type: "SET_PRODUCTS", payload: data });
-    });
-
-    setTimeout(() => {
-      setShowUi(true);
-    }, 1500);
-  }, []);
-
   return (
     <div className="containner-fluid ">
       <HeaderAdvertisement />
       <Header />
 
-      {showUi && (
-        <>
-          <Hero />
-          <main className="container   p-0">
-            <Features />
-            <Offer />
-            <Moto />
-            <Delivery/>
-            <InstagramPics/>
-          </main>
-        </>
-      )}
-      {!showUi && <HomeShimmer />}
+      <Hero />
+      <main className="container   p-0">
+        <Features />
+        <Offer />
+        <Moto />
+        <Delivery />
+        <InstagramPics />
+      </main>
 
       <Footer />
     </div>

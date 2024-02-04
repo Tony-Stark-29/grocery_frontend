@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
   faAngleUp,
+  faClose,
   faIndianRupee,
   faIndianRupeeSign,
   faRupeeSign,
@@ -59,7 +60,8 @@ export const Cart = () => {
 
         {cart.length > 0 ? (
           cart.map((item) => (
-            <div className="row m-auto my-2 py-2 align-items-center  border-bottom">
+            <div className="cart-item row m-auto my-2 py-2 align-items-center  border-bottom position-relative">
+              <div className="cart-item-delete w-auto position-absolute "><FontAwesomeIcon icon={faClose} className="" /></div>
               <div className="col-7 ">
                 <div className="row m-auto">
                   <div className="col-3 border rouned-3 p-0">
