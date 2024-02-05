@@ -3,7 +3,7 @@
 :root {
   --navbar-primary: #15211a;
   --navbar-text-primary: #f06c54;
-  --background-primary: #fff4ec;
+  --background-primary: #b7b7b7;
   --footer-primary: #15211a;
   --text-primary: #f06c54;
 }
@@ -16,8 +16,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   font-family: "Quicksand", sans-serif;
+   background-color: #92b48a46 !important;
+
 }
 
+ 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

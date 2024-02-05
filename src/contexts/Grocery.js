@@ -22,11 +22,10 @@ const groceryReducer = (state, action) => {
       );
       return { ...state, products: filtered };
 
-    //Categoreis
+    
     case "SET_CATEGORIES":
       return { ...state, categories: action.payload };
 
-    //Default
     default:
       return state;
   }

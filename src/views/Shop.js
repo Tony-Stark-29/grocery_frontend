@@ -14,14 +14,14 @@ export const Shop = () => {
     .pop();
 
   return (
-    <div className="containner-fluid  m-auto ">
+    <div className="containner-fluid bg-transparent m-auto ">
       <HeaderAdvertisement />
       <Header />
       <div className="d-flex flex-column align-items-center bg-light py-5 shadow-sm overflow-hidden ">
         <BreadcrumbNav />
         {currPage === "shop" && <ProductCategoryCarousel />}
       </div>
-      <main className="container  my-3 bg-light rounded  p-0 overflow-hidden w-auto  ">
+      <main className="container  my-3 rounded bg-light p-0 overflow-hidden w-auto  ">
         <Outlet />
       </main>
       <Footer />

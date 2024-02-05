@@ -1,4 +1,5 @@
 import React from "react";
+import { lazy } from "react";
  
 import fruit from "../../resources/collages/fruit-basket.jpeg";
 import vegies from "../../resources/collages/tomato.webp";
@@ -13,8 +14,35 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import "./shop.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft, faUser } from "@fortawesome/free-solid-svg-icons";
+
 
 export const ProductCategoryCarousel = () => {
+
+  function  PrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block",  }}
+        onClick={onClick}
+      >
+        <FontAwesomeIcon className="text-danger" icon={faUser} />
+      </div>
+    );
+  }
+  function  NextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style }}
+        onClick={onClick}
+      />
+    );
+  }
+    
   var settings = {
     dots: false,
     centerMode: false,
@@ -22,6 +50,8 @@ export const ProductCategoryCarousel = () => {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
 
     responsive: [
       {

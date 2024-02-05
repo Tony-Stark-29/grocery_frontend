@@ -16,6 +16,7 @@ import { productChecks } from "../../constants/grocery";
 import { ProductReview } from "./ProductReview";
 import { AddtoWhishListBtn } from "../whishList/AddtoWhishListBtn";
 import { AddToCart } from "../cart/AddToCart";
+import "./shop.css";
 
 export const Product = () => {
   const { name: productName, id } = useParams();
@@ -49,7 +50,7 @@ export const Product = () => {
   }
 
   return (
-    <section className="container-flex m-auto p-0 bg-white">
+    <section className="product-card container-flex m-auto p-0 bg-white">
       <div className="row m-auto">
         <div className="col-12 col-md-6 p-0">
           <div className="row m-0 p-0 position-relative">

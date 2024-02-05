@@ -23,9 +23,9 @@ export const BreadcrumbNav = () => {
             <li key={index}>
               <span className="fw-bolder "> / </span>
               {index !== filtered.length - 1 ? (
-                <Link className="fw-bolder text-capitalize" to={routeTo}> {name} </Link>
+                <Link className="fw-bolder text-capitalize" to={routeTo}> {name.replace("-"," ")} </Link>
               ) : (
-                <span className="fw-bolder text-capitalize">{name}</span>
+                <span className="fw-bolder text-capitalize">{name.replace("-"," ")}</span>
               )}
             </li>
           );
@@ -36,7 +36,7 @@ export const BreadcrumbNav = () => {
           filtered[filtered.length - 1].slice(
             1,
             filtered[filtered.length - 1].length
-          )}
+          ).replace("-"," ")}
       </div>
     </>
   );

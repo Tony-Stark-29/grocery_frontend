@@ -14,10 +14,11 @@ import { Orders } from "./features/myAccount/Orders";
 import { Addresses } from "./features/myAccount/Addresses";
 import { AccountDetails } from "./features/myAccount/AccountDetails";
 import { Cart } from "./features/cart/Cart";
+import { Checkout } from "./features/checkout/Checkout";
 
 function App() {
   return (
-    <div className="App bg-light">
+    <div className="App ">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
@@ -27,16 +28,15 @@ function App() {
             <Route index element={<ProductByCategory />}></Route>
             <Route path=":name/:id" element={<Product />}></Route>
           </Route>
-          <Route path="cart" element={<Cart/>}  >
-
-          </Route>
+          <Route path="cart" element={<Cart />}></Route>
           <Route path="myaccount" element={<MyAccount />}>
-            <Route path="dashboard" element={<Dashboard />}></Route>
+            <Route index element={<Dashboard />}></Route>
             <Route path="orders" element={<Orders />}></Route>
             <Route path="addresses" element={<Addresses />}></Route>
             <Route path="account-details" element={<AccountDetails />}></Route>
           </Route>
           <Route path="myaccount/login" element={<Login />}></Route>
+          <Route path="checkout/:id?" element={<Checkout/>} ></Route>
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

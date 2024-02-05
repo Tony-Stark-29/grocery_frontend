@@ -62,9 +62,9 @@ export const CartPreview = () => {
           className="btn btn-outline-success m-1"
           onClick={() => navigate("/shop/cart")}
         >
-          See All{" "}
+          See All 
         </button>
-        <button className="btn btn-warning m-1">Checkout </button>
+        <button className="btn btn-warning m-1" onClick={()=>navigate("/shop/checkout")}>Checkout </button>
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useUserContext } from "../../hooks/useUserContext";
 import toast, { Toaster } from "react-hot-toast";
 import { useApi } from "../../hooks/useApi";
+ 
 
 export const AccountDetails = () => {
   const { user } = useUserContext();
@@ -43,6 +44,9 @@ export const AccountDetails = () => {
 
   return (
     <div className="row">
+      <div>
+        <h3 className="fw-bolder">User Details</h3>
+      </div>
       <form className="col-12 col-lg-6">
         <div className="form-group my-2">
           <label htmlFor="first-name">First Name</label>

@@ -37,33 +37,32 @@ export const MyAccount = () => {
         <nav className="navbar ">
           <ul className="navbar-nav d-flex flex-column text-center text-lg-start  w-100">
             <li className="nav-item">
-              <Link to={"dashboard"} className="nav-link">
-                {" "}
-                Dashboard{" "}
+              <Link to={"/shop/myaccount"} className="nav-link">
+                Dashboard
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"orders"} className="nav-link">
-                {" "}
-                Orders{" "}
+                Orders
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"addresses"} className="nav-link">
-                {" "}
-                Addresses{" "}
+                Addresses
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"account-details"} className="nav-link">
-                {" "}
-                Account Details{" "}
+                Account Details
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/" onClick={handleLogOut}>
-                <FontAwesomeIcon className="text-success" icon={faRightFromBracket} />{" "}
-                <span>Logout</span>{" "}
+                <FontAwesomeIcon
+                  className="text-success"
+                  icon={faRightFromBracket}
+                />
+                <span>Logout</span>
               </Link>
             </li>
           </ul>

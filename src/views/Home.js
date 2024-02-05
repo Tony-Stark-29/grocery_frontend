@@ -11,12 +11,12 @@ import { InstagramPics } from "../features/promotion/InstagramPics";
 
 export const Home = () => {
   return (
-    <div className="containner-fluid ">
+    <div className="containner-fluid bg-light ">
       <HeaderAdvertisement />
       <Header />
 
       <Hero />
-      <main className="container   p-0">
+      <main className="container p-0 vh-75" >
         <Features />
         <Offer />
         <Moto />

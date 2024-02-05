@@ -67,3 +67,12 @@
 {
     color: var(--navbar-text-primary);
 }
+
+
+.product-card a{
+
+    font-weight: 700;
+    text-decoration: none;
+    color: #23403d;
+
+}

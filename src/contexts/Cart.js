@@ -12,19 +12,29 @@ export const CartContext = createContext();
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      // const prodctExist=state.cart.find((item)=> item?._id===action.payload?._id);
-      // if(prodctExist)
-      // {
-      //   const modified=state.cart.map((item)=> item._id===action.payload?._id?{...item,quantity:item.quantity+1}:item)
-      //   return {...state,cart:modified}
-      // }
-      console.log(action.payload);
       return { ...state, cart: action.payload };
-
     case "UPDATE_CART":
-        return {...state,cart:[...state.cart,action.payload]}
+      const prodct = state.cart.find(
+        (item) => item?._id === action.payload?._id
+      );
+      if (prodct) {
+        const modified = state.cart.map((item) =>
+          item._id === action.payload?._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+        return { ...state, cart: modified };
+      }
+      return { ...state, cart: [...state.cart, action.payload] };
+    case "DELETE_CART_ITEM":
+      const filtered = state.cart.filter(
+        (item) => item._id !== action.payload?._id
+      );
+      return { ...state, cart: filtered };
     case "SUB_TOTAL":
       return { ...state, subTotal: action.payload };
+    case "RESET_CART":
+      return { ...state, initialState };
     default:
       return state;
   }

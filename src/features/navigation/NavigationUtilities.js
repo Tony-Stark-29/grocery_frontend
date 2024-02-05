@@ -11,16 +11,20 @@ import { CartPreview } from "../cart/CartPreview";
 import { Link } from "react-router-dom";
 import { CartModal } from "../cart/CartModal";
 import { useCartContext } from "../../hooks/useCartContext";
+import { UserProfileCard } from "../user/UserProfileCard";
 export const NavigationUtilities = () => {
-
-  const {cart}=useCartContext();
+  const { cart } = useCartContext();
   return (
     <div className="action-container row  m-auto text-center  collape navbar-collapse fs-5">
       <div className="nav-dropdown-container  col d-none d-xl-block ">
         <Link to="/shop/myaccount/login">
           {" "}
           <FontAwesomeIcon className="  link-scale" icon={faUser} />
+          
         </Link>
+        <div className="nav-dropdown-card card shadow">
+            <UserProfileCard/>
+          </div>
       </div>
       <div className="nav-dropdown-container col d-none d-xl-block ">
         <FontAwesomeIcon className="  link-scale" icon={faHeart} />

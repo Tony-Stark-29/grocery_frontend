@@ -1,51 +1,34 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useCartContext } from "../../hooks/useCartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDown,
-  faAngleUp,
-  faClose,
-  faIndianRupee,
-  faIndianRupeeSign,
-  faRupeeSign,
-} from "@fortawesome/free-solid-svg-icons";
+import { faClose, faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import "./cart.css";
 import { EmptyCart } from "./EmptyCart";
 import { useApi } from "../../hooks/useApi";
+import { CheckoutCard } from "../checkout/CheckoutCard";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Cart = () => {
+  const { cart, dispatch } = useCartContext();
+  const { error, isLoading, requestApi } = useApi();
 
- 
-
-  const angleDown = (
-    <FontAwesomeIcon
-      onClick={() => setAccordinIcon(angleUp)}
-      icon={faAngleDown}
-    />
-  );
-  const angleUp = (
-    <FontAwesomeIcon
-      onClick={() => setAccordinIcon(angleDown)}
-      icon={faAngleUp}
-    />
-  );
-  const couponAccordin = useRef(null);
-  const { cart, subTotal ,dispatch} = useCartContext();
-  const [accordinIcon, setAccordinIcon] = useState(angleDown);
-
-  
-  const toggleAccordin = () => {
-    couponAccordin.current.classList.toggle("show");
-  };
-
-  if(cart.length ===0)
-  {
-    return <EmptyCart/>
+  if (cart.length === 0) {
+    return <EmptyCart />;
   }
 
+  const handleCartItemDelete = async (_id) => {
+    requestApi(`/user/cart/${_id}`, "DELETE").then((data) => {
+      if (data?.error) {
+        toast.error(data.error);
+        return;
+      }
+      toast.success(data.message);
+      dispatch({ type: "DELETE_CART_ITEM", payload: { _id } });
+    });
+  };
   return (
     <section className="cart-container row m-auto p-3 border">
-      <div className="col-12 col-md-8">
+      <div className="col-12 col-md-8 py-2">
         <div className="row m-auto">
           <div className="col-7">
             <h6>Product</h6>
@@ -61,7 +44,13 @@ export const Cart = () => {
         {cart.length > 0 ? (
           cart.map((item) => (
             <div className="cart-item row m-auto my-2 py-2 align-items-center  border-bottom position-relative">
-              <div className="cart-item-delete w-auto position-absolute "><FontAwesomeIcon icon={faClose} className="" /></div>
+              <div className="cart-item-delete w-auto position-absolute ">
+                <FontAwesomeIcon
+                  onClick={() => handleCartItemDelete(item?._id)}
+                  icon={faClose}
+                  className=""
+                />
+              </div>
               <div className="col-7 ">
                 <div className="row m-auto">
                   <div className="col-3 border rouned-3 p-0">
@@ -73,7 +62,14 @@ export const Cart = () => {
                   </div>
                   <div className="col d-flex flex-column align-items-center justify-content-center ">
                     <h5 className="w-auto">{item?.name}</h5>
-                    <p><strong><span><FontAwesomeIcon icon={faIndianRupeeSign} /></span><span>{item?.price }</span></strong></p>
+                    <p>
+                      <strong>
+                        <span>
+                          <FontAwesomeIcon icon={faIndianRupeeSign} />
+                        </span>
+                        <span>{item?.price}</span>
+                      </strong>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -81,7 +77,14 @@ export const Cart = () => {
                 <p>{item?.quantity}</p>
               </div>
               <div className="col-2 text-center text-success">
-                <p><strong><span><FontAwesomeIcon icon={faIndianRupeeSign} /></span><span>{item?.price * item?.quantity}</span></strong></p>
+                <p>
+                  <strong>
+                    <span>
+                      <FontAwesomeIcon icon={faIndianRupeeSign} />
+                    </span>
+                    <span>{item?.price * item?.quantity}</span>
+                  </strong>
+                </p>
               </div>
             </div>
           ))
@@ -91,34 +94,10 @@ export const Cart = () => {
           </div>
         )}
       </div>
-      <div className="col-12 col-md-4 align-self-end rounded border border-success">
-        <div className="row m-auto border-bottom my-3 py-2">
-          <div className="col-12 d-flex flex-row align-items-center">
-            <h5 className=" w-75  ">Coupon Code</h5>{" "}
-            <div className="w-25 text-end">
-              <span onClick={toggleAccordin}>{accordinIcon}</span>
-            </div>
-          </div>
-          <div
-            className="col-12 collapse "
-            id="coupon-accordin"
-            ref={couponAccordin}
-          >
-            <input type="text" className="form-control" placeholder="REP50" />
-          </div>
-        </div>
-        <div className="row m-auto border-bottom align-items-center my-2">
-          <div className="col-6">
-            <h5 className=" ">SubTotal</h5>{" "}
-          </div>
-          <div className="col-6 text-end fs-5">
-            <p className="text-success">
-              <FontAwesomeIcon icon={faIndianRupee} />{" "}
-              <strong>{subTotal}</strong>
-            </p>
-          </div>
-        </div>
+      <div className="col-12 col-md-4 position-relative ">
+        <CheckoutCard />
       </div>
+      <Toaster />
     </section>
   );
 };
