@@ -25,7 +25,6 @@ const groceryReducer = (state, action) => {
     
     case "SET_CATEGORIES":
       return { ...state, categories: action.payload };
-
     default:
       return state;
   }

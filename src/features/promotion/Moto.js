@@ -22,7 +22,7 @@ export const Moto = () => {
             ensure they are not only healthy for you but also for the
             environment.
           </p>
-          <button className="btn btn-primary">Know More</button>
+          <button className="btn-outline-primary m-auto w-auto rounded-5 right-arrow px-4">Know More</button>
         </div>
         <div>
             <img src={service_boy} alt="service"  className="img-fluid"/>

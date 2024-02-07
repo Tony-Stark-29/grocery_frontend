@@ -37,9 +37,8 @@
 }
 
 .instagram-link-container {
-   
-   transform: translate(-50%,50%);
-   left: 50%;
+  transform: translate(-50%, 50%);
+  left: 50%;
   color: #f06c54;
   cursor: pointer;
   background-color: #fff4ecc0;
@@ -58,5 +57,31 @@
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+ 
+.announcement-container {
+  background-color: var(--text-primary);
+  position: relative;
+  min-height: 50px;
+  overflow: hidden;
+}
+.marquee {
+  top: 10px;
+  width: 200%;
+  position: absolute;
+ 
+  animation: marquee 13s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
   }
 }

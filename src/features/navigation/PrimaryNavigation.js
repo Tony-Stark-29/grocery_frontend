@@ -8,7 +8,7 @@ import "./navigation.css";
 
 export const PrimaryNavigation = () => {
   return (
-    <div className="primary-navigation row m-auto  text-light align-items-center justify-content-between p-2 ">
+    <div className="primary-navigation row m-auto  align-items-center justify-content-between p-2 ">
       <div className="d-block d-lg-none col-2">
         <button
           className="navbar-toggler"
@@ -17,7 +17,6 @@ export const PrimaryNavigation = () => {
           data-bs-target="#mobileNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
-          
         >
           <FontAwesomeIcon
             className="navbar-toggle-icon fa-icons"
@@ -32,7 +31,7 @@ export const PrimaryNavigation = () => {
           Daily
         </div>
       </div>
-      <nav className="col-8 d-none d-lg-block navbar  navbar-expand-lg navbar-dark bg-transparent text-light ">
+      <nav className="col-8 d-none d-lg-block navbar  navbar-expand-lg navbar-light   bg-transparent   ">
         <div
           className=" collapse navbar-collapse d-flex flex-column flex-md-row justify-content-center  "
           id="primaryNav"

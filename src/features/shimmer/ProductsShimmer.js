@@ -7,7 +7,7 @@ export const ProductsShimmer = ({ count }) => {
     <section className="row vh-50  d-flex flex-row flex-wrap  p-0 m-0">
         <div
           className="col-12 rounded-0 border shimmer"
-          style={{ minHeight: "100px" }}
+          style={{ minHeight: "50px" }}
         ></div>
       {arr.map((item,index) => (
         <div

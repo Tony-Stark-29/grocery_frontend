@@ -15,6 +15,8 @@ import { Addresses } from "./features/myAccount/Addresses";
 import { AccountDetails } from "./features/myAccount/AccountDetails";
 import { Cart } from "./features/cart/Cart";
 import { Checkout } from "./features/checkout/Checkout";
+import { WhishList } from "./features/whishList/WhishList";
+ 
 
 function App() {
   return (
@@ -23,12 +25,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="shop" element={<Shop />}>
-          <Route index element={<Products />}></Route>
+          <Route index element={<Products  />}></Route>
           <Route path=":category">
             <Route index element={<ProductByCategory />}></Route>
             <Route path=":name/:id" element={<Product />}></Route>
           </Route>
           <Route path="cart" element={<Cart />}></Route>
+          <Route path="whishlist" element={<WhishList/>}></Route>
           <Route path="myaccount" element={<MyAccount />}>
             <Route index element={<Dashboard />}></Route>
             <Route path="orders" element={<Orders />}></Route>

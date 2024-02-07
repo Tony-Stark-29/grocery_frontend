@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faAdd,
   faCheck,
-  faHeart,
   faIndianRupee,
-  faMinus,
   faStopwatch,
 } from "@fortawesome/free-solid-svg-icons";
-import { ProductsShimmer } from "../shimmer/ProductsShimmer";
+
 import { productInitialData } from "../../constants/data";
 import { productChecks } from "../../constants/grocery";
 import { ProductReview } from "./ProductReview";
 import { AddtoWhishListBtn } from "../whishList/AddtoWhishListBtn";
 import { AddToCart } from "../cart/AddToCart";
-import "./shop.css";
+import { ProductShimmer } from "../shimmer/ProductShimmer";
+import { ProductQuantityBtn } from "./ProductQuantityBtn";
+import { useGroceryContext } from "../../hooks/useGroceryContext";
+ 
+import { auth } from "../../config/firebaseConfig";
+import { useCartContext } from "../../hooks/useCartContext";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Product = () => {
   const { name: productName, id } = useParams();
-  const params = useParams();
 
-  const { error, isLoading, requestApi } = useApi();
+  const navigate = useNavigate();
+  const { isLoading, requestApi } = useApi();
+  const { products } = useGroceryContext();
+  const { dispatch: cartDispatch } = useCartContext();
   const [product, setProduct] = useState(productInitialData);
+  const [productQuantity, setProductQuantity] = useState(0);
 
   useEffect(() => {
     requestApi(`/grocery/product/${productName || id}`, "GET", null)
@@ -31,7 +37,7 @@ export const Product = () => {
         setProduct((prev) => ({ ...prev, ...data?.product }));
       })
       .catch((error) => console.log(error.message));
-  }, []);
+  } );
 
   const {
     name,
@@ -46,14 +52,58 @@ export const Product = () => {
   } = product;
 
   if (isLoading) {
-    return <ProductsShimmer />;
+    return <ProductShimmer />;
   }
 
+  const handleBuyItem = async () => {
+    const itemToAdd =
+      products.find((item) => item?._id === id) ||
+      (await requestApi(`/grocery/product/${id}`, "GET"));
+
+    if (itemToAdd?.stock === 0) {
+      toast.error("Out of Stock");
+      return;
+    }
+
+    const payload = {
+      _id: itemToAdd._id,
+      name: itemToAdd.name,
+      price: itemToAdd.price,
+      quantity: productQuantity || 1,
+      imageUrl: itemToAdd.imageUrl,
+    };
+    const item = {
+      _id: itemToAdd?._id,
+      quantity: 1,
+    };
+
+    if (auth.currentUser) {
+      const res = await requestApi("/user/cart", "POST", { item });
+
+      if (res.error || res.Error) {
+        toast.error(res.error, {
+          style: {
+            width: "500px",
+            textAlign: "left",
+            fontSize: "0.9rem",
+          },
+        });
+        return;
+      }
+      toast.success(res.message);
+    }
+    if (!auth.currentUser) {
+      toast.success("Item added to Cart");
+    }
+    cartDispatch({ type: "UPDATE_CART", payload });
+    navigate("/shop/checkout");
+  };
+
   return (
-    <section className="product-card container-flex m-auto p-0 bg-white">
+    <section className=" container-fluid m-auto p-0 bg-white">
       <div className="row m-auto">
-        <div className="col-12 col-md-6 p-0">
-          <div className="row m-0 p-0 position-relative">
+        <div className="col-12 col-md-6 p-0 ">
+          <div className="row m-0 p-0 position-relative overflow-hidden">
             <img className="img-fluid" src={imageUrl} alt="product preview" />
             <div className="position-absolute top-fixed px-lg-2 m-lg-3 d-flex -flex-row flex-wrap w-75">
               {offer > 0 && (
@@ -92,18 +142,34 @@ export const Product = () => {
           <h3 className="fw-bolder">{name}</h3>
           <p>{description.split(".")[0]}</p>
           <h4 className="text-success">
-            <strong>
-              <FontAwesomeIcon icon={faIndianRupee} /> {price}
-            </strong>
+            {!offer && (
+              <span className="">
+                <FontAwesomeIcon icon={faIndianRupee} />
+                {price}
+              </span>
+            )}
+            {offer && (
+              <>
+                <span className="">
+                  <FontAwesomeIcon icon={faIndianRupee} />
+                  {price - price * (Number(offer) / 100)}
+                </span>
+                <small className="mx-2 fs-6 text-decoration-line-through text-muted">
+                  <FontAwesomeIcon icon={faIndianRupee} />
+                  {price}
+                </small>
+              </>
+            )}
           </h4>
           <div className="my-3">
             <div className="progress w-75 " style={{ height: "6px" }}>
               <div
-                className="progress-bar bg-danger w-25"
+                className="progress-bar bg-danger "
+                style={{ width: `${(1 / stock) * 100}%` }}
                 role="progressbar"
-                aria-valuenow="100"
+                aria-valuenow="1"
                 aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuemax={stock}
               ></div>
             </div>
             <div className=" row  m-auto my-2 ">
@@ -111,37 +177,40 @@ export const Product = () => {
                 <small>
                   <strong>Available : </strong>
                 </small>
-                100
+                <span>{stock}</span>
               </div>
               <div className="col-6">
                 <small>
                   <strong>sold : </strong>
                 </small>
-                100
+                <span>1</span>
               </div>
             </div>
           </div>
           <div className="action row m-auto mt-lg-4 mb-3 align-items-center ">
             <div className="btn-group w-auto m-auto overflow-hidden">
-              <button className="btn btn-outline-dark ">
-                <FontAwesomeIcon icon={faMinus} />
-              </button>
-              <div className="p-2">
-                <strong>0</strong>
-              </div>
-              <button className="btn btn-outline-dark">
-                <FontAwesomeIcon icon={faAdd} />
-              </button>
+              <ProductQuantityBtn
+                quantity={productQuantity}
+                setQuantity={setProductQuantity}
+              />
             </div>
             <div className="  w-auto m-auto ">
-              <AddToCart  id={id} content={"Add To Cart"} />
+              <AddToCart
+                id={id}
+                stock={stock}
+                quantity={productQuantity}
+                content={"Add To Cart"}
+              />
             </div>
             <div className="col text-center">
               <AddtoWhishListBtn />
             </div>
           </div>
           <div className="row m-auto">
-            <button className="btn btn-outline-dark rounded-5 px-5 w-50 my-3">
+            <button
+              className="btn btn-outline-dark rounded-5 px-5 w-50 my-3"
+              onClick={handleBuyItem}
+            >
               Buy
             </button>
           </div>
@@ -174,6 +243,7 @@ export const Product = () => {
           <ProductReview />
         </div>
       </div>
+      <Toaster />
     </section>
   );
 };

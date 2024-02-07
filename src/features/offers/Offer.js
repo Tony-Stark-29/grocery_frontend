@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./offer.css";
 import offer_header_image from "../../resources/family-3d-vector.jpg";
 
@@ -7,7 +7,7 @@ import { ProductCard } from "../shop/ProductCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowCircleRight,
-  faArrowRightArrowLeft,
+ 
 } from "@fortawesome/free-solid-svg-icons";
 import { useGroceryContext } from "../../hooks/useGroceryContext";
  
@@ -16,17 +16,19 @@ import { useApi } from "../../hooks/useApi";
 
 export const Offer = () => {
   const navigate = useNavigate();
-  const { error, isLoading, requestApi } = useApi();
-  const [products,setProducts]=useState([]);
+  const {  isLoading, requestApi } = useApi();
+  const {products,dispatch:groceryDispatch}=useGroceryContext();
 
   useEffect(() => {
     requestApi("/grocery/offers", "GET").then((data) => {
-       if(!data.error)
+       if(!data?.error)
        {
-        setProducts(data.products);
+        
+        groceryDispatch({ type: "SET_PRODUCTS", payload: data?.products });
+
        }
     });
-  }, []);
+  });
 
   return (
     <section
@@ -51,10 +53,10 @@ export const Offer = () => {
                 </div>
                 <div className="col-12">
                   <button
-                    className="btn btn-outline-warning rounded-5"
+                    className=" w-auto m-auto btn-filled-secondary rounded-5 px-4 "
                     onClick={() => navigate("/shop")}
                   >
-                    View All <FontAwesomeIcon icon={faArrowCircleRight} />
+                    <span className="mx-2">View All </span><FontAwesomeIcon icon={faArrowCircleRight} />
                   </button>
                 </div>
               </div>

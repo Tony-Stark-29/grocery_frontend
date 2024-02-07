@@ -33,13 +33,14 @@
   font-weight: 700;
 }
 
-.mobile-only-navigation{
+.primary-navigation {
+  max-width: 1980px;
+}
+
+.mobile-only-navigation {
   background-color: var(--navbar-primary) !important;
 }
 
- 
-.mobile-only-navigation a,.primary-navigation a{
-
+.mobile-only-navigation a {
   color: #fff;
 }
- 

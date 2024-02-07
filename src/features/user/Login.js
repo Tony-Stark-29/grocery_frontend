@@ -8,11 +8,11 @@ export const Login = () => {
   const { isAuthenticated } = useUserContext();
   const navigate = useNavigate();
   useEffect(() => {
-   if (isAuthenticated) navigate("/shop/myaccount")
+    if (isAuthenticated) navigate("/shop/myaccount");
   }, [isAuthenticated]);
 
   return (
-    <div className="col-10 col-8-md col-lg-6 m-auto border border-3 rounded-3 overflow-hidden">
+    <div className="col-10 col-8-md col-lg-6 m-auto border border-3 rounded-3 overflow-hidden my-5">
       <div className="row">
         <div className="col-12 col-md-6 p-0 border-end position-relative">
           <img

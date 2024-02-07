@@ -9,19 +9,28 @@ import { auth } from "../../config/firebaseConfig";
 import { useApi } from "../../hooks/useApi";
 import loading_spinner from "../../resources/tube-spinner-light.svg";
 
-export const AddToCart = ({ content = "", stock, id }) => {
+export const AddToCart = ({ content = "", stock, id ,quantity}) => {
   const { cart, dispatch: cartDispatch } = useCartContext();
   const { error, isLoading, requestApi } = useApi();
   const { products } = useGroceryContext();
 
-  const handleAddToCart = async (id) => {
-    const itemToAdd = products.find((item) => item?._id === id);
+  console.log("Quantity from Add to Cart : ",quantity)
+
+   const handleAddToCart = async (id) => {
+    const itemToAdd =
+      products.find((item) => item?._id === id) ||
+      (await requestApi(`/grocery/product/${id}`, "GET"));
+
+    if (itemToAdd?.stock === 0) {
+      toast.error("Out of Stock");
+      return;
+    }
 
     const payload = {
       _id: itemToAdd._id,
       name: itemToAdd.name,
       price: itemToAdd.price,
-      quantity: 1,
+      quantity: quantity || 1,
       imageUrl: itemToAdd.imageUrl,
     };
     const item = {
@@ -33,16 +42,19 @@ export const AddToCart = ({ content = "", stock, id }) => {
       const res = await requestApi("/user/cart", "POST", { item });
 
       if (res.error || res.Error) {
-        toast.error(res.error,{
+        toast.error(res.error, {
           style: {
-            width: '500px', 
-            textAlign:"left",
-            fontSize:"0.9rem"
+            width: "500px",
+            textAlign: "left",
+            fontSize: "0.9rem",
           },
         });
         return;
       }
       toast.success(res.message);
+    }
+    if (!auth.currentUser) {
+      toast.success("Item added to Cart");
     }
     cartDispatch({ type: "UPDATE_CART", payload });
   };
@@ -59,6 +71,7 @@ export const AddToCart = ({ content = "", stock, id }) => {
         {isLoading && <img src={loading_spinner} className="img-fluid  " />}
         {!isLoading && btnContent}
       </button>
+
       <Toaster containerClassName="container" />
     </>
   );

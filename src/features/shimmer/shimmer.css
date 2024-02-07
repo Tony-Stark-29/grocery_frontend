@@ -1,6 +1,4 @@
 .shimmer {
-  border: 2px solid rgb(224, 224, 224);
-  border-radius: 20px;
   background-color: rgb(237, 237, 237);
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
@@ -11,6 +9,31 @@
   opacity: 0;
 }
 
+.shimmer-heading {
+  min-height: 20px;
+  min-width: 200px;
+  background-color: rgb(237, 237, 237);
+  max-height: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background-size: 1200px 100%;
+  opacity: 0;
+}
+
+.shimmer-text {
+  min-height: 5px;
+  background-color: rgb(212, 212, 212);
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background-size: 1200px 100%;
+  opacity: 0;
+}
 @-webkit-keyframes shimmer {
   0% {
     transform: scale(0.5);
@@ -26,12 +49,12 @@
 
 @keyframes shimmer {
   0% {
-     opacity: 0.5;
+    opacity: 0.5;
   }
   50% {
-   opacity: 1;
+    opacity: 1;
   }
-  100%{
+  100% {
     opacity: 0.5;
   }
 }

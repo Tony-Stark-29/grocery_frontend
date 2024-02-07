@@ -108,7 +108,7 @@ export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
         {showResend && <small>Resend</small>}
       </div>
       <div>
-        <button className="btn btn-outline-success" onClick={otpVerify}>
+        <button className=" btn-outline-primary rounded-5 px-4" onClick={otpVerify}>
           Verify
           {isLoadindg && (
             <img

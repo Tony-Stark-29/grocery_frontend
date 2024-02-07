@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./user.css";
 import { OtpVerify } from "./OtpVerify";
 import { auth } from "../../config/firebaseConfig";
@@ -13,6 +13,9 @@ export const LoginForm = () => {
   const [error, setError] = useState("");
   const inputNumberRef = useRef();
 
+  useEffect(() => {
+    inputNumberRef.current.focus();
+  }, []);
   const isValid = (value) => {
     const regex = /^[0-9]/;
     return regex.test(value);
@@ -61,29 +64,24 @@ export const LoginForm = () => {
   }
 
   function loginUser(e) {
-
     e.preventDefault();
     setIsLoading(true);
     onCapthaVerify();
 
-    const formatedPhoneNumber="+91"+phoneNumber;
-    const appVerifier=window.recaptchaVerifier;
-    signInWithPhoneNumber(auth,formatedPhoneNumber,appVerifier)
-    .then((confirmationResult)=>{
-      window.confirmationResult=confirmationResult;
-      setIsLoading(false);
-      setShowEnterOtp(true);
-      toast.success("Otp sent successfully")
-    })
-    .catch((error)=>{
-
-      setIsLoading(false);
-      console.log(error)
-
-    })
-
+    const formatedPhoneNumber = "+91" + phoneNumber;
+    const appVerifier = window.recaptchaVerifier;
+    signInWithPhoneNumber(auth, formatedPhoneNumber, appVerifier)
+      .then((confirmationResult) => {
+        window.confirmationResult = confirmationResult;
+        setIsLoading(false);
+        setShowEnterOtp(true);
+        toast.success("Otp sent successfully");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log(error);
+      });
   }
-
 
   return (
     <>
@@ -119,7 +117,7 @@ export const LoginForm = () => {
           {error && <div className="text-center text-warning">{error}</div>}
           <div>
             <button
-              className="btn btn-outline-success my-2"
+              className=" btn-outline-primary rounded-5 my-2 px-4"
               type="submit"
               onClick={loginUser}
             >
@@ -137,7 +135,7 @@ export const LoginForm = () => {
       )}
       {showEnterOpt && <OtpVerify length={6} />}
       <div id="recaptcha-container"></div>
-      <Toaster toastOptions={{duration:3000}} />
+      <Toaster toastOptions={{ duration: 3000 }} />
     </>
   );
 };

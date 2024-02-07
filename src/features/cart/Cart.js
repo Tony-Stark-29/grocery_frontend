@@ -1,16 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useCartContext } from "../../hooks/useCartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import "./cart.css";
 import { EmptyCart } from "./EmptyCart";
 import { useApi } from "../../hooks/useApi";
-import { CheckoutCard } from "../checkout/CheckoutCard";
+ 
 import toast, { Toaster } from "react-hot-toast";
+import { CartTotal } from "./CartTotal";
 
 export const Cart = () => {
   const { cart, dispatch } = useCartContext();
-  const { error, isLoading, requestApi } = useApi();
+  const { requestApi } = useApi();
 
   if (cart.length === 0) {
     return <EmptyCart />;
@@ -95,7 +96,7 @@ export const Cart = () => {
         )}
       </div>
       <div className="col-12 col-md-4 position-relative ">
-        <CheckoutCard />
+            <CartTotal/>
       </div>
       <Toaster />
     </section>

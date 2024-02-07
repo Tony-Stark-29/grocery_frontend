@@ -17,11 +17,11 @@ export const Shop = () => {
     <div className="containner-fluid bg-transparent m-auto ">
       <HeaderAdvertisement />
       <Header />
-      <div className="d-flex flex-column align-items-center bg-light py-5 shadow-sm overflow-hidden ">
+      <div className="d-flex flex-column align-items-center bg-light py-2 shadow-sm overflow-hidden ">
         <BreadcrumbNav />
         {currPage === "shop" && <ProductCategoryCarousel />}
       </div>
-      <main className="container  my-3 rounded bg-light p-0 overflow-hidden w-auto  ">
+      <main className="container  my-4 rounded bg-light p-0 overflow-hidden w-auto  ">
         <Outlet />
       </main>
       <Footer />

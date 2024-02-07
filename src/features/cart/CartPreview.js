@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import { useCartContext } from "../../hooks/useCartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupee } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 export const CartPreview = () => {
-  const { subTotal, cart, dispatch: cartDispatch } = useCartContext();
+  const { subTotal, cart  } = useCartContext();
   const navigate = useNavigate();
- 
+
   return (
-    <>
+    <div className="row m-auto">
       <div className="card-header">
         <div className="card-title">Cart Preview</div>
       </div>
@@ -50,22 +50,28 @@ export const CartPreview = () => {
               </div>
             </div>
           ))}
+        {cart?.length === 0 && <p className="text-dark">No Items in Cart</p>}
       </div>
-      <div className=" row ">
+      <div className=" row m-auto align-items-center">
         <div className="col-6 fw-light">SubTotal : </div>
         <div className="col-6">
           <FontAwesomeIcon icon={faIndianRupee} /> {subTotal}
         </div>
       </div>
-      <div className="  my-2">
+      <div className=" row m-auto justify-content-evenly align-items-center  my-2">
         <button
-          className="btn btn-outline-success m-1"
+          className="w-auto btn-outline-primary rounded-5 px-4 "
           onClick={() => navigate("/shop/cart")}
         >
-          See All 
+          See All
         </button>
-        <button className="btn btn-warning m-1" onClick={()=>navigate("/shop/checkout")}>Checkout </button>
+        <button
+          className="w-auto btn-filled-primary rounded-5 px-4 "
+          onClick={() => navigate("/shop/checkout")}
+        >
+          Checkout{" "}
+        </button>
       </div>
-    </>
+    </div>
   );
 };

@@ -20,7 +20,7 @@ const cartReducer = (state, action) => {
       if (prodct) {
         const modified = state.cart.map((item) =>
           item._id === action.payload?._id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity +  (action.payload?.quantity || 1) }
             : item
         );
         return { ...state, cart: modified };
@@ -34,7 +34,7 @@ const cartReducer = (state, action) => {
     case "SUB_TOTAL":
       return { ...state, subTotal: action.payload };
     case "RESET_CART":
-      return { ...state, initialState };
+      return { ...state, ...initialState };
     default:
       return state;
   }

@@ -22,7 +22,7 @@ export const HeaderAdvertisement = () => {
           <div className="col-4 col-md-6  text-end">
             <span className="mx-3">
               <FontAwesomeIcon icon={faPhone} style={icon_style} /> +91
-              9028479854
+              9876543210
             </span>
             <span className="mx-3">
               <FontAwesomeIcon icon={faEnvelope} style={icon_style} />{" "}

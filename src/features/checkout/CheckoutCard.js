@@ -10,6 +10,7 @@ import {
   faIndianRupee,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGooglePay } from "@fortawesome/free-brands-svg-icons";
+import { CartItemSummary } from "../cart/CartItemSummary";
 
 export const CheckoutCard = () => {
   const angleDown = (
@@ -33,7 +34,10 @@ export const CheckoutCard = () => {
   };
 
   return (
-    <div className=" border border-success rounded p-2    " style={{zIndex:"1"}}>
+    <div
+      className=" border border-success rounded p-2    "
+      style={{ zIndex: "1" }}
+    >
       <div className="row m-auto border-bottom my-3 py-2">
         <div className="col-12 d-flex flex-row align-items-center">
           <h5 className=" w-75  ">Coupon Code</h5>{" "}
@@ -48,6 +52,11 @@ export const CheckoutCard = () => {
         >
           <input type="text" className="form-control" placeholder="REP50" />
         </div>
+      </div>
+
+      <div className="row w-auto m-auto fs-6">
+        <h5>Cart Items</h5>
+        <CartItemSummary />
       </div>
       <div className="row m-auto">
         <h5>Shipping </h5>
@@ -118,7 +127,9 @@ export const CheckoutCard = () => {
       </div>
 
       <div className="row m-auto mb-3">
-        <button className="btn btn-success rounded-5 px-3 py-1 w-auto m-auto">Place Order</button>
+        <button className="btn-filled-primary rounded-5 px-3 py-1 w-auto m-auto">
+          Place Order
+        </button>
       </div>
     </div>
   );
