@@ -17,7 +17,7 @@ export const useApi = () => {
     try {
       setIsLoading(true);
 
-      const res = await fetch(`${process.env.REACT_API_BASE_URL||""}${url}`, {
+      const res = await fetch(`https://tasty-daily.onrender.com${url}`, {
         method: method || "GET",
         headers: {
           "Content-Type": method !== "GET" ? "application/json" : null,
