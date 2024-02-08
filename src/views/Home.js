@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import { HeaderAdvertisement } from "../features/navigation/HeaderAdvertisement";
 import { Header } from "../features/header/Header";
 import { Hero } from "../features/hero/Hero";
@@ -12,8 +12,8 @@ import { Announcement } from "../features/promotion/Announcement";
 
 export const Home = () => {
   return (
-    <div className="containner-fluid  bg-light ">
-      <Announcement/>
+    <div className="containner-fluid   ">
+      <Announcement />
       <HeaderAdvertisement />
       <Header />
       <Hero />

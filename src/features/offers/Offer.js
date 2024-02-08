@@ -19,6 +19,7 @@ export const Offer = () => {
   const {  isLoading, requestApi } = useApi();
   const {products,dispatch:groceryDispatch}=useGroceryContext();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     requestApi("/grocery/offers", "GET").then((data) => {
        if(!data?.error)
@@ -28,7 +29,7 @@ export const Offer = () => {
 
        }
     });
-  });
+  },[]);
 
   return (
     <section

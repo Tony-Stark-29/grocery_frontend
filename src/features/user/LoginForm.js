@@ -16,32 +16,10 @@ export const LoginForm = () => {
   useEffect(() => {
     inputNumberRef.current.focus();
   }, []);
+
   const isValid = (value) => {
-    const regex = /^[0-9]/;
+    const regex = /^(\+91)?[6-9]\d{9}$/;
     return regex.test(value);
-  };
-  const handleMobileNumberChange = (e) => {
-    const value = e.target.value;
-
-    setPhoneNumber(value);
-  };
-
-  const handleSendOtp = (e) => {
-    e.preventDefault();
-
-    if (!isValid(phoneNumber)) {
-      setError("Enter Valid Phone Number");
-      setPhoneNumber("");
-      inputNumberRef.current.focus();
-    }
-
-    if (phoneNumber.length < 10) {
-      setError("Enter 10 digit Valid Number");
-      inputNumberRef.current.focus();
-      return;
-    }
-
-    setShowEnterOtp(true);
   };
 
   function onCapthaVerify() {
@@ -54,10 +32,7 @@ export const LoginForm = () => {
           callback: (response) => {
             loginUser();
           },
-          "expired-callback": () => {
-            // Response expired. Ask user to solve reCAPTCHA again.
-            // ...
-          },
+          "expired-callback": () => {},
         }
       );
     }
@@ -65,6 +40,13 @@ export const LoginForm = () => {
 
   function loginUser(e) {
     e.preventDefault();
+
+    if (!isValid(phoneNumber)) {
+      inputNumberRef.current.focus();
+      toast.error("Invalid Phone Number");
+      return;
+    }
+
     setIsLoading(true);
     onCapthaVerify();
 
@@ -111,7 +93,7 @@ export const LoginForm = () => {
               ref={inputNumberRef}
               value={phoneNumber}
               onInput={() => setError("")}
-              onChange={handleMobileNumberChange}
+              onChange={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
           {error && <div className="text-center text-warning">{error}</div>}

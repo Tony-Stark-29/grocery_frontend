@@ -1,13 +1,10 @@
 import React from "react";
-import { lazy } from "react";
-
 import fruit from "../../resources/collages/fruit-basket.jpeg";
 import vegies from "../../resources/collages/tomato.webp";
 import bakery from "../../resources/collages/bread.jpg";
 import juice from "../../resources/collages/organic-juice.jpg";
 import milk from "../../resources/collages/milk.jpg";
 import meat from "../../resources/collages/meat.webp";
-import egg from "../../resources/collages/eggs.webp";
 import seafood from "../../resources/collages/seafood.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -57,10 +54,10 @@ export const ProductCategoryCarousel = () => {
   };
   return (
     <div className="carousal-container container  mt-2">
-      <div className="d-flex flex-row justify-content-evenly">
+      <Slider {...settings}>
         <div className="px-1 py-2 text-center">
           <img
-            className="img-fluid rounded  shadow-sm m-auto "
+            className="img-fluid  shadow-sm m-auto  "
             src={vegies}
             alt="First slide"
           />
@@ -70,7 +67,7 @@ export const ProductCategoryCarousel = () => {
         </div>
         <div className="px-1 py-2 text-center">
           <img
-            className="img-fluid rounded  shadow-sm m-auto "
+            className="img-fluid  shadow-sm m-auto "
             src={fruit}
             alt="Second slide"
           />
@@ -81,7 +78,7 @@ export const ProductCategoryCarousel = () => {
         </div>
         <div className="px-1 py-2 text-center">
           <img
-            className="img-fluid rounded  shadow-sm m-auto "
+            className="img-fluid  shadow-sm m-auto "
             src={bakery}
             alt="Third slide"
           />
@@ -91,7 +88,7 @@ export const ProductCategoryCarousel = () => {
         </div>
         <div className="px-1 py-2 text-center">
           <img
-            className="img-fluid rounded  shadow-sm m-auto "
+            className="img-fluid  shadow-sm m-auto "
             src={juice}
             alt="Third slide"
           />
@@ -102,7 +99,7 @@ export const ProductCategoryCarousel = () => {
         </div>
         <div className="px-1 py-2 text-center">
           <img
-            className="img-fluid rounded  shadow-sm m-auto "
+            className="img-fluid  shadow-sm m-auto "
             src={milk}
             alt="Third slide"
           />
@@ -113,7 +110,7 @@ export const ProductCategoryCarousel = () => {
         </div>
         <div className="px-1 py-2 text-center">
           <img
-            className="img-fluid rounded  shadow-sm m-auto "
+            className="img-fluid  shadow-sm m-auto "
             src={meat}
             alt="Third slide"
           />
@@ -124,16 +121,16 @@ export const ProductCategoryCarousel = () => {
         </div>
         <div className="px-1 py-2 text-center">
           <img
-            className="img-fluid  shadow-sm m-auto "
+            className="img-fluid shadow-sm m-auto "
             src={seafood}
             alt="Third slide"
           />
 
           <Link to={`/shop/${"seafood"}`}>
-            <h6 className="my-1">Meat</h6>
+            <h6 className="my-1">Seafood</h6>
           </Link>
         </div>
-      </div>
+      </Slider>
     </div>
   );
 };

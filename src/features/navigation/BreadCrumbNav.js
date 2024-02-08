@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, Link, Router } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./navigation.css";
 
 export const BreadcrumbNav = () => {
@@ -7,7 +7,7 @@ export const BreadcrumbNav = () => {
   const decodedPathnames = decodeURIComponent(location.pathname);
   const pathnames = decodedPathnames
     .split("/")
-    .filter((path) => path.length != 0 && path.length < 20);
+    .filter((path) => path.length !== 0 && path.length < 20);
 
   const filtered = [...new Set(pathnames)];
 

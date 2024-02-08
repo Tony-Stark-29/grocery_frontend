@@ -26,15 +26,18 @@ export const UserContextProvider = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
       if (authUser) {
         try {
-          const response = await fetch("/user/login", {
-            method: "GET",
-            headers: {
-              Authorization: "Bearer " + authUser?.accessToken,
-            },
-          });
+          const response = await fetch(
+            `${process.env.REACT_API_BASE_URL || ""}/user/login`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: "Bearer " + authUser?.accessToken,
+              },
+            }
+          );
           const userData = await response.json();
-          console.log("UserData",userData.user);
-          dispatch({ type: "LOGIN", payload: userData?.user  });
+          console.log("UserData", userData.user);
+          dispatch({ type: "LOGIN", payload: userData?.user });
         } catch (error) {
           console.error("Error fetching user data from backend:", error);
         }

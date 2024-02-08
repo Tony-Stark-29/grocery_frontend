@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import logo from "../../resources/icons/favicon.ico";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,7 +18,7 @@ import {
 import "./navigation.css";
 
 export const MobileNavigation = () => {
-  const navigate = useNavigate();
+  ;
   return (
     <div
       className="mobile-only-navigation offcanvas   d-block d-lg-none offcanvas-start text-light "
@@ -40,8 +40,7 @@ export const MobileNavigation = () => {
           data-bs-dismiss="offcanvas"
           aria-label="Close"
         >
-          {" "}
-          <FontAwesomeIcon icon={faClose} />{" "}
+          <FontAwesomeIcon icon={faClose} />
         </div>
       </div>
       <div
@@ -131,7 +130,7 @@ export const MobileNavigation = () => {
           <Link to="/shop/cart">
             <FontAwesomeIcon className="fa-icons fs-3" icon={faShoppingCart} />
           </Link>
-          <Link to="/shop/liked-items">
+          <Link to="/shop/whishlist">
             <FontAwesomeIcon className="fa-icons fs-3" icon={faHeart} />
           </Link>
           <Link to="/">

@@ -16,7 +16,7 @@ import { AddToCart } from "../cart/AddToCart";
 import { ProductShimmer } from "../shimmer/ProductShimmer";
 import { ProductQuantityBtn } from "./ProductQuantityBtn";
 import { useGroceryContext } from "../../hooks/useGroceryContext";
- 
+
 import { auth } from "../../config/firebaseConfig";
 import { useCartContext } from "../../hooks/useCartContext";
 import toast, { Toaster } from "react-hot-toast";
@@ -31,13 +31,14 @@ export const Product = () => {
   const [product, setProduct] = useState(productInitialData);
   const [productQuantity, setProductQuantity] = useState(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     requestApi(`/grocery/product/${productName || id}`, "GET", null)
       .then((data) => {
         setProduct((prev) => ({ ...prev, ...data?.product }));
       })
       .catch((error) => console.log(error.message));
-  } );
+  }, []);
 
   const {
     name,
@@ -144,11 +145,14 @@ export const Product = () => {
           <h4 className="text-success">
             {!offer && (
               <span className="">
-                <FontAwesomeIcon icon={faIndianRupee} />
-                {price}
+                <span>
+                  <FontAwesomeIcon icon={faIndianRupee} />
+                  {price}
+                </span> 
+                <strong>/</strong> <span>{unit}</span>
               </span>
             )}
-            {offer && (
+            {offer!==0 && (
               <>
                 <span className="">
                   <FontAwesomeIcon icon={faIndianRupee} />
@@ -203,12 +207,12 @@ export const Product = () => {
               />
             </div>
             <div className="col text-center">
-              <AddtoWhishListBtn />
+              <AddtoWhishListBtn id={id} />
             </div>
           </div>
           <div className="row m-auto">
             <button
-              className="btn btn-outline-dark rounded-5 px-5 w-50 my-3"
+              className="  btn-filled-primary fs-4 rounded-5 px-3 w-50 my-3"
               onClick={handleBuyItem}
             >
               Buy

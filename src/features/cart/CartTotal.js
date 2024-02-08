@@ -1,22 +1,13 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCartContext } from "../../hooks/useCartContext";
-import {
-  faAngleDown,
-  faAngleUp,
-  faBuildingColumns,
-  faCreditCard,
-  faCreditCardAlt,
-  faIndianRupee,
-  faMultiply,
-} from "@fortawesome/free-solid-svg-icons";
-import { faGooglePay } from "@fortawesome/free-brands-svg-icons";
+import { faIndianRupee } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { CartItemSummary } from "./CartItemSummary";
 
 export const CartTotal = () => {
   const navigate = useNavigate();
-  const { cart, subTotal, dispatch } = useCartContext();
+  const { subTotal } = useCartContext();
 
   return (
     <div
@@ -31,7 +22,7 @@ export const CartTotal = () => {
           </h5>
         </div>
         <div className="row m-auto">
-          <CartItemSummary/>
+          <CartItemSummary />
         </div>
       </div>
 

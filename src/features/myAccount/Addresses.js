@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AddressForm } from "./AddressForm";
 import { useUserContext } from "../../hooks/useUserContext";
 
-import toast, { Toaster } from "react-hot-toast";
-
+ 
 export const Addresses = () => {
   const { user } = useUserContext();
   const [showAddressForm, setShowAddressForm] = useState(false);
@@ -87,7 +86,7 @@ export const Addresses = () => {
           </div>
         </>
       )}
-      <Toaster />
+      
       {showAddressForm && (
         <AddressForm setShow={setShowAddressForm} formData={formData} />
       )}

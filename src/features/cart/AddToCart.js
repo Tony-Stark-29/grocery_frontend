@@ -10,8 +10,8 @@ import { useApi } from "../../hooks/useApi";
 import loading_spinner from "../../resources/tube-spinner-light.svg";
 
 export const AddToCart = ({ content = "", stock, id ,quantity}) => {
-  const { cart, dispatch: cartDispatch } = useCartContext();
-  const { error, isLoading, requestApi } = useApi();
+  const {  dispatch: cartDispatch } = useCartContext();
+  const {   isLoading, requestApi } = useApi();
   const { products } = useGroceryContext();
 
   console.log("Quantity from Add to Cart : ",quantity)
@@ -68,7 +68,7 @@ export const AddToCart = ({ content = "", stock, id ,quantity}) => {
         onClick={() => handleAddToCart(id)}
         disabled={isLoading}
       >
-        {isLoading && <img src={loading_spinner} className="img-fluid  " />}
+        {isLoading && <img src={loading_spinner} className="img-fluid  " alt="loading..." />}
         {!isLoading && btnContent}
       </button>
 

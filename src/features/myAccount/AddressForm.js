@@ -6,7 +6,7 @@ import { useApi } from "../../hooks/useApi";
 export const AddressForm = ({ setShow, formData }) => {
   const { user } = useUserContext();
 
-  const [statesInIndia, setStatesInindia] = useState(
+  const [statesInIndia, setStatesInIndia] = useState(
     State.getStatesOfCountry("IN")
   );
   const [citiesInState, setCitiesInState] = useState([]);
@@ -25,8 +25,8 @@ export const AddressForm = ({ setShow, formData }) => {
   const [phoneNumber, setPhoneNumber] = useState(user?.phone_number || "");
   const [email, setEmail] = useState("");
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    console.log(formData.data);
     if (formData?.data) {
       const {
         name,
@@ -50,8 +50,9 @@ export const AddressForm = ({ setShow, formData }) => {
       setPinCode(pin_code);
       setEmail(email);
     }
-  }, []);
+  });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const stateCode = statesInIndia.find(
       (state) => state.name === stateSelected
@@ -81,21 +82,22 @@ export const AddressForm = ({ setShow, formData }) => {
       country: countrySelected,
     };
     if (formData?.type === "Billing Address") {
-      requestApi("/user/user-details", "PUT", { billing_address: data }).then((data)=>{
-        if(!data.error)
-        {
-          setShow(false)
+      requestApi("/user/user-details", "PUT", { billing_address: data }).then(
+        (data) => {
+          if (!data.error) {
+            setShow(false);
+          }
         }
-      })
+      );
     }
     if (formData?.type === "Shipping Address") {
-      requestApi("/user/user-details", "PUT", { shipping_address: data }).then((data)=>{
-        
-        if(!data.error)
-        {
-          setShow(false)
+      requestApi("/user/user-details", "PUT", { shipping_address: data }).then(
+        (data) => {
+          if (!data.error) {
+            setShow(false);
+          }
         }
-      })
+      );
     }
   };
 

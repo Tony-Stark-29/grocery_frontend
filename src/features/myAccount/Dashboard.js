@@ -1,8 +1,6 @@
 import {
   faArchive,
-  faBoxArchive,
   faHeart,
-  faShoppingBag,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +26,10 @@ export const Dashboard = () => {
         <div className="  d-flex flex-row align-items-center justify-content-between my-4  px-2 py-1  ">
           <div className=" d-flex flex-row align-items-center">
             <div>
-              <FontAwesomeIcon className="fa-icons fs-3 " icon={faShoppingCart} />
+              <FontAwesomeIcon
+                className="fa-icons fs-3 "
+                icon={faShoppingCart}
+              />
             </div>
             <h6 className="fw-bolder text-center mx-2">Cart Items</h6>
           </div>

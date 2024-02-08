@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import loading_spinner_black from "../../resources/tube-spinner-black.svg";
-import { useUserContext } from "../../hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
 
-export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
+export const OtpVerify = ({ length = 4 }) => {
   const [otp, setOtp] = useState(new Array(length).fill(" "));
   const [showResend, setShowResend] = useState(false);
   const [timer, setTimer] = useState(0);
   const [isLoadindg, setIsLoading] = useState(false);
-  const { dispatch } = useUserContext();
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -58,7 +56,7 @@ export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
       index > 0 &&
       inputRefs.current[index - 1]
     ) {
-      // Move focus to the previous input field on backspace
+      
       inputRefs.current[index - 1].focus();
     }
   };
@@ -72,10 +70,10 @@ export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
       );
 
       if (userCredential?.user) {
-          navigate("/shop/myaccount");
+        navigate("/shop/myaccount");
       }
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -108,7 +106,10 @@ export const OtpVerify = ({ length = 4, handleOtpSubmit = () => {} }) => {
         {showResend && <small>Resend</small>}
       </div>
       <div>
-        <button className=" btn-outline-primary rounded-5 px-4" onClick={otpVerify}>
+        <button
+          className=" btn-outline-primary rounded-5 px-4"
+          onClick={otpVerify}
+        >
           Verify
           {isLoadindg && (
             <img

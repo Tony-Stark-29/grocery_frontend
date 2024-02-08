@@ -1,5 +1,4 @@
 import { createContext, useEffect, useReducer } from "react";
-import { useApi } from "../hooks/useApi";
 import { auth } from "../config/firebaseConfig";
 
 const initialState = {
@@ -20,7 +19,10 @@ const cartReducer = (state, action) => {
       if (prodct) {
         const modified = state.cart.map((item) =>
           item._id === action.payload?._id
-            ? { ...item, quantity: item.quantity +  (action.payload?.quantity || 1) }
+            ? {
+                ...item,
+                quantity: item.quantity + (action.payload?.quantity || 1),
+              }
             : item
         );
         return { ...state, cart: modified };
@@ -42,7 +44,6 @@ const cartReducer = (state, action) => {
 
 export const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const { requestApi } = useApi();
 
   useEffect(() => {
     const total =
@@ -51,7 +52,6 @@ export const CartContextProvider = ({ children }) => {
             .map((item) => Number(item?.price) * Number(item?.quantity))
             .reduce((sum, price) => price + sum)
         : 0;
-    console.log(total);
     dispatch({ type: "SUB_TOTAL", payload: total });
   }, [state.cart]);
 
@@ -59,7 +59,7 @@ export const CartContextProvider = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
       if (authUser) {
         try {
-          const response = await fetch("/user/cart", {
+          const response = await fetch(`${process.env.REACT_API_BASE_URL||""}/user/cart`, {
             method: "GET",
             headers: {
               Authorization: "Bearer " + authUser?.accessToken,

@@ -6,7 +6,6 @@ import {
   faAngleUp,
   faBuildingColumns,
   faCreditCard,
-  faCreditCardAlt,
   faIndianRupee,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGooglePay } from "@fortawesome/free-brands-svg-icons";
@@ -26,7 +25,7 @@ export const CheckoutCard = () => {
     />
   );
   const couponAccordin = useRef(null);
-  const { cart, subTotal, dispatch } = useCartContext();
+  const { subTotal } = useCartContext();
   const [accordinIcon, setAccordinIcon] = useState(angleDown);
 
   const toggleAccordin = () => {

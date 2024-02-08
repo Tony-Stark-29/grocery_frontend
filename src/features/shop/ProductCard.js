@@ -23,16 +23,12 @@ export const ProductCard = ({ item }) => {
       <div className="h-50 overflow-hidden position">
         <img src={imageUrl} alt="Item Preview" className="img-fluid " />
       </div>
-      <div className="position-absolute top-fixed px-lg-2 m-lg-3 d-flex -flex-row flex-wrap w-75">
+      <div className="position-absolute top-fixed  px-lg-2 m-lg-3 d-flex -flex-row flex-wrap w-50">
         {offer > 0 && (
-          <span className=" badge  bg-success shadow m-1 m-lg-2   ">
-            - {offer} %
-          </span>
+          <span className=" badge  bg-success shadow m-1 ">- {offer} %</span>
         )}
         {stock === 0 && (
-          <span className=" badge bg-danger shadow m-1 m-lg-2 ">
-            Out Of Stock
-          </span>
+          <span className=" badge bg-danger shadow m-1 ">Out Of Stock</span>
         )}
       </div>
 

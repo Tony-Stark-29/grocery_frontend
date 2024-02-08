@@ -2,7 +2,7 @@ import { faAdd, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./shop.css";
 
-export const ProductQuantityBtn = ({quantity, setQuantity }) => {
+export const ProductQuantityBtn = ({ quantity, setQuantity }) => {
   console.log(setQuantity);
   const handleIncrement = () => {
     console.log("inc");
@@ -14,7 +14,7 @@ export const ProductQuantityBtn = ({quantity, setQuantity }) => {
   };
 
   return (
-    <div className="btn-group d-flex flex-row justify-contenet-center border border-success align-items-center rounded-5">
+    <div className="  d-flex flex-row justify-contenet-center border border-success align-items-center rounded-5">
       <button
         className="w-auto p-0 btn-outline-primary border-0 rounded-start-5"
         onClick={handleDecrement}

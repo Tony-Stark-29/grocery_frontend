@@ -1,6 +1,4 @@
 import {
-  faBiking,
-  faMotorcycle,
   faPhone,
   faShield,
   faStopwatch,
@@ -68,7 +66,7 @@ export const Announcement = () => {
         </span>
         <span className=" mx-3">
           <FontAwesomeIcon icon={faTruck} /> Free Delivery
-        </span>    
+        </span>
       </div>
     </div>
   );
