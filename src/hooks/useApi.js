@@ -18,7 +18,7 @@ export const useApi = () => {
       setIsLoading(true);
 
      
-      const res = await fetch(`${url}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}${url}`, {
         method: method || "GET",
         headers: {
           "Content-Type": method !== "GET" ? "application/json" : null,
