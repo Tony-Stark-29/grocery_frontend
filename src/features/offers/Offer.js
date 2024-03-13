@@ -1,35 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./offer.css";
 import offer_header_image from "../../resources/family-3d-vector.jpg";
 
-import { ProductCard } from "../shop/ProductCard";
+import { ProductCard } from "../products/ProductCard";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowCircleRight,
- 
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { useGroceryContext } from "../../hooks/useGroceryContext";
- 
+
 import { useNavigate } from "react-router-dom";
 import { useApi } from "../../hooks/useApi";
+import { ProductShimmer } from "../shimmer/ProductShimmer";
 
 export const Offer = () => {
   const navigate = useNavigate();
-  const {  isLoading, requestApi } = useApi();
-  const {products,dispatch:groceryDispatch}=useGroceryContext();
+  const { isLoading, requestApi } = useApi();
+  const { products, dispatch: groceryDispatch } = useGroceryContext();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     requestApi("/grocery/offers", "GET").then((data) => {
-       if(!data?.error)
-       {
-        
+      if (!data?.error) {
         groceryDispatch({ type: "SET_PRODUCTS", payload: data?.products });
-
-       }
-    });
-  },[]);
+      }
+    }); 
+  }, []);
 
   return (
     <section
@@ -57,18 +52,26 @@ export const Offer = () => {
                     className=" w-auto m-auto btn-filled-secondary rounded-5 px-4 "
                     onClick={() => navigate("/shop")}
                   >
-                    <span className="mx-2">View All </span><FontAwesomeIcon icon={faArrowCircleRight} />
+                    <span className="mx-2">View All </span>
+                    <FontAwesomeIcon icon={faArrowCircleRight} />
                   </button>
                 </div>
               </div>
             </div>
           </div>
           <div className="row">
-            {isLoading && <div>Loading</div> }
+            {isLoading && <ProductShimmer count={6} />}
             {products.length > 0 &&
               products
                 .slice(0, 6)
                 .map((item) => <ProductCard key={item._id} item={item} />)}
+                {products.length === 0 && <div className="row m-auto justify-content-center align-items-center px-2 py-4 " >
+
+                      <div className="text-danger">
+                        <span>No products to show </span>
+                      </div>
+
+                </div> }
           </div>
         </div>
       </div>

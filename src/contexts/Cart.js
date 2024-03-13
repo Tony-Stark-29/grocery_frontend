@@ -59,7 +59,7 @@ export const CartContextProvider = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
       if (authUser) {
         try {
-          const response = await fetch(`https://tasty-daily.onrender.com/user/cart`, {
+          const response = await fetch(`${process.env.REACT_APP_API_BASE_URL||"/user/cart"}`, {
             method: "GET",
             headers: {
               Authorization: "Bearer " + authUser?.accessToken,

@@ -27,7 +27,7 @@ export const UserContextProvider = ({ children }) => {
       if (authUser) {
         try {
           const response = await fetch(
-            `https://tasty-daily.onrender.com/user/login`,
+            `${process.env.REACT_APP_API_BASE_URL || ""}/user/login`,
             {
               method: "GET",
               headers: {

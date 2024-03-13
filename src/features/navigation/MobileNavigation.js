@@ -1,5 +1,5 @@
-import React from "react";
-import { Link  } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../resources/icons/favicon.ico";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,11 +18,30 @@ import {
 import "./navigation.css";
 
 export const MobileNavigation = () => {
-  ;
+  const closeOffCanvas = () => {
+    document.getElementById("mobileNav").classList.remove("show");
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const mobileNav = document.getElementById("mobileNav");
+      if (mobileNav && !mobileNav.contains(event.target)) {
+        closeOffCanvas();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div
-      className="mobile-only-navigation offcanvas   d-block d-lg-none offcanvas-start text-light "
+      className="mobile-only-navigation offcanvas  offcanvas-start d-block d-lg-none text-light "
       tabIndex="-1"
+      data-bs-backdrop="false"
       id="mobileNav"
       aria-labelledby="offcanvasLabel"
     >
@@ -54,8 +73,10 @@ export const MobileNavigation = () => {
             </li>
             <li className="nav-item m-0">
               <Link
+                reloadDocument
                 className="nav-link d-flex flex-row justify-content-between align-items-center"
                 to="/shop"
+                onClick={closeOffCanvas}
               >
                 <span>
                   <FontAwesomeIcon className="fa-icons mx-2  " icon={faShop} />
@@ -69,8 +90,10 @@ export const MobileNavigation = () => {
             </li>
             <li className="nav-item m-0">
               <Link
+                reloadDocument
                 className="nav-link   d-flex flex-row justify-content-between align-items-center"
                 to="/shop/vegetables"
+                onClick={closeOffCanvas}
               >
                 <span>
                   <FontAwesomeIcon className="fa-icons mx-2" icon={faLeaf} />
@@ -81,8 +104,10 @@ export const MobileNavigation = () => {
             </li>
             <li className="nav-item m-0">
               <Link
+                reloadDocument
                 className="nav-link d-flex flex-row justify-content-between align-items-center"
                 to="/shop/fruits"
+                onClick={closeOffCanvas}
               >
                 <span>
                   <FontAwesomeIcon
@@ -96,8 +121,10 @@ export const MobileNavigation = () => {
             </li>
             <li className="nav-item m-0">
               <Link
+                reloadDocument
                 className="nav-link d-flex flex-row justify-content-between align-items-center"
                 to="/shop/meat"
+                onClick={closeOffCanvas}
               >
                 <span>
                   <FontAwesomeIcon
@@ -111,8 +138,10 @@ export const MobileNavigation = () => {
             </li>
             <li className="nav-item m-0">
               <Link
+                reloadDocument
                 className="nav-link d-flex flex-row justify-content-between align-items-center"
                 to="/shop/dairy"
+                onClick={closeOffCanvas}
               >
                 <span>
                   <FontAwesomeIcon className="fa-icons mx-2" icon={faCow} />
@@ -124,16 +153,16 @@ export const MobileNavigation = () => {
           </ul>
         </nav>
         <div className="d-flex flex-row fw-bolder   py-3 align-items-center justify-content-evenly">
-          <Link to="/shop/myaccount">
+          <Link  reloadDocument to="/shop/myaccount" onClick={closeOffCanvas}>
             <FontAwesomeIcon className="fa-icons fs-3" icon={faUser} />
           </Link>
-          <Link to="/shop/cart">
+          <Link  reloadDocument to="/shop/cart" onClick={closeOffCanvas}>
             <FontAwesomeIcon className="fa-icons fs-3" icon={faShoppingCart} />
           </Link>
-          <Link to="/shop/whishlist">
+          <Link  reloadDocument to="/shop/whishlist" onClick={closeOffCanvas}>
             <FontAwesomeIcon className="fa-icons fs-3" icon={faHeart} />
           </Link>
-          <Link to="/">
+          <Link  reloadDocument to="/" onClick={closeOffCanvas}>
             <FontAwesomeIcon
               className="text-danger fs-3"
               icon={faRightFromBracket}

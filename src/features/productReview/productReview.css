@@ -1,0 +1,31 @@
+.reviews-card {
+  min-height: 150px;
+  min-width: 250px;
+}
+
+.user-avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.prev-btn,
+.next-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navbar-secondary);
+  position: absolute;
+}
+
+.next-btn:active {
+  transform: translateX(1px);
+}
+.prev-btn:active {
+  transform: translateX(-1px);
+}

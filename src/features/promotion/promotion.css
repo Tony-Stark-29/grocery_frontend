@@ -45,8 +45,8 @@
 }
 
 .instagram-colleges > div img {
-  width: 220px;
-  height: 220px;
+  width:auto;
+  height: 250px;
 }
 
 @keyframes blur-zoom-out {

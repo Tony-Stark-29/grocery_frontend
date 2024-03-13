@@ -13,7 +13,7 @@ const groceryReducer = (state, action) => {
     case "SET_PRODUCTS":
       return { ...state, products: action.payload };
     case "ADD_PRODUCTS":
-      console.log(state.products);
+     
       const data=[...action.payload,...state.products]; 
       return { ...state, products:[...new Map(data.map((m) => [m.name, m])).values()] };
     case "DELETE_PRODUCT":

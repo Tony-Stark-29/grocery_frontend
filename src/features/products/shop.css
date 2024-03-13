@@ -49,7 +49,6 @@
   color: #23403d;
 }
 
- 
 .carousal-container a:hover {
   color: var(--navbar-text-primary);
 }
@@ -60,4 +59,25 @@
   color: #23403d;
 }
 
- 
+.prev-btn,
+.next-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  z-index: 1000;
+}
+
+.next-btn:active {
+  transform: translateX(1px);
+}
+.prev-btn:active {
+  transform: translateX(-1px);
+}
+
+.related-products {
+  background-color: #92b48a17;
+}

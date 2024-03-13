@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./shop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupee } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { AddToCart } from "../cart/AddToCart";
 
 export const ProductCard = ({ item }) => {
+  useEffect(() => {}, [item]);
   const {
     _id,
     name,
@@ -17,7 +18,7 @@ export const ProductCard = ({ item }) => {
     offer,
     imageUrl,
   } = item;
-  console.log("Offer", Number(offer));
+
   return (
     <div className=" col-6 col-md-3 col-lg-2 product-card card rounded-0 p-0 m-0 position-relative">
       <div className="h-50 overflow-hidden position">
@@ -34,13 +35,15 @@ export const ProductCard = ({ item }) => {
 
       <div className="card-body">
         <Link
+          reloadDocument
           className="h5 card-title text-capitalize font-weight-bolder"
           to={`/shop/${category.toLowerCase()}/${name.toLowerCase()}/${_id}`}
         >
           {name}
         </Link>
+
         <p className="card-text font-weight-light">
-          {`${description?.split(" ").slice(0, 20).join(" ")}...`}
+          o {`${description?.split(" ").slice(0, 20).join(" ")}...`}
         </p>
         <div>
           {tags?.slice(0, 2).map((tag, index) => (

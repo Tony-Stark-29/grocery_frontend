@@ -11,50 +11,32 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import "./shop.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-
+ 
 export const ProductCategoryCarousel = () => {
-  function PrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block" }}
-        onClick={onClick}
-      >
-        <FontAwesomeIcon className="text-danger" icon={faUser} />
-      </div>
-    );
-  }
-  function NextArrow(props) {
-    const { className, style, onClick } = props;
-    return <div className={className} style={{ ...style }} onClick={onClick} />;
-  }
-
+ 
   var settings = {
-    dots: false,
-    centerMode: false,
-    infinite: true,
-    speed: 700,
+    dots: true,
+    infinite: false,
+    speed: 500,
     slidesToShow: 7,
     slidesToScroll: 7,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-
+    initialSlide: 0,
     responsive: [
       {
-        breakpoint: 480,
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          infinite: true,
+          dots: true,
         },
       },
     ],
   };
+
   return (
     <div className="carousal-container container  mt-2">
-      <Slider {...settings}>
+      <Slider {...settings}  >
         <div className="px-1 py-2 text-center">
           <img
             className="img-fluid  shadow-sm m-auto  "

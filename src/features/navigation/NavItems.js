@@ -6,9 +6,11 @@ import {
   faLeaf,
   faAppleWhole,
   faDrumstickBite,
-  faCow
+  faCow,
+  faLemon,
 } from "@fortawesome/free-solid-svg-icons";
 import "./navigation.css";
+import { faApple } from "@fortawesome/free-brands-svg-icons";
 
 export const NavItems = () => {
   return (
@@ -20,9 +22,15 @@ export const NavItems = () => {
         </Link>
       </li>
       <li className="nav-item mx-3">
-        <Link className="nav-link" to="/shop/vegetables" >
+        <Link className="nav-link" to="/shop/vegetables">
           <FontAwesomeIcon className="fa-icons mx-2" icon={faLeaf} />
           <span>Vegies</span>
+        </Link>
+      </li>
+      <li className="nav-item mx-3">
+        <Link to="/shop/salad" className="nav-link">
+          <FontAwesomeIcon className="fa-icons mx-2" icon={faLemon} />{" "}
+          <span>Salad</span> 
         </Link>
       </li>
       <li className="nav-item mx-3">
@@ -32,7 +40,7 @@ export const NavItems = () => {
         </Link>
       </li>
       <li className="nav-item mx-3">
-        <Link className="nav-link"  to="/shop/meat">
+        <Link className="nav-link" to="/shop/meat">
           <FontAwesomeIcon className="fa-icons mx-2" icon={faDrumstickBite} />
           <span>Meat</span>
         </Link>

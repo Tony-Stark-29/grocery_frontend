@@ -9,17 +9,15 @@ import { auth } from "../../config/firebaseConfig";
 import { useApi } from "../../hooks/useApi";
 import loading_spinner from "../../resources/tube-spinner-light.svg";
 
-export const AddToCart = ({ content = "", stock, id ,quantity}) => {
-  const {  dispatch: cartDispatch } = useCartContext();
-  const {   isLoading, requestApi } = useApi();
+export const AddToCart = ({ content = "", stock, id, quantity }) => {
+  const { cart, dispatch: cartDispatch } = useCartContext();
+  const { isLoading, requestApi } = useApi();
   const { products } = useGroceryContext();
 
-  console.log("Quantity from Add to Cart : ",quantity)
+  console.log("Quantity from Add to Cart : ", quantity);
 
-   const handleAddToCart = async (id) => {
-    const itemToAdd =
-      products.find((item) => item?._id === id) ||
-      (await requestApi(`/grocery/product/${id}`, "GET"));
+  const handleAddToCart = async (id) => {
+    const itemToAdd = await requestApi(`/grocery/product/${id}`, "GET");
 
     if (itemToAdd?.stock === 0) {
       toast.error("Out of Stock");
@@ -39,7 +37,7 @@ export const AddToCart = ({ content = "", stock, id ,quantity}) => {
     };
 
     if (auth.currentUser) {
-      const res = await requestApi("/user/cart", "POST", { item });
+      const res = await requestApi(`/user/cart/${id}`, "POST", { item });
 
       if (res.error || res.Error) {
         toast.error(res.error, {
@@ -56,6 +54,10 @@ export const AddToCart = ({ content = "", stock, id ,quantity}) => {
     if (!auth.currentUser) {
       toast.success("Item added to Cart");
     }
+    // if(!cart.find((item)=> item._id === itemToAdd._id))
+    // {
+    //   cartDispatch({ type: "ADD_TO_CART", payload });
+    // }
     cartDispatch({ type: "UPDATE_CART", payload });
   };
 
@@ -68,7 +70,9 @@ export const AddToCart = ({ content = "", stock, id ,quantity}) => {
         onClick={() => handleAddToCart(id)}
         disabled={isLoading}
       >
-        {isLoading && <img src={loading_spinner} className="img-fluid  " alt="loading..." />}
+        {isLoading && (
+          <img src={loading_spinner} className="img-fluid  " alt="loading..." />
+        )}
         {!isLoading && btnContent}
       </button>
 

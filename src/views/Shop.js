@@ -2,7 +2,7 @@ import React from "react";
 import { HeaderAdvertisement } from "../features/navigation/HeaderAdvertisement";
 import { Footer } from "../features/footer/Footer";
 import { BreadcrumbNav } from "../features/navigation/BreadCrumbNav";
-import { ProductCategoryCarousel } from "../features/shop/ProductCategoryCarousel";
+import { ProductCategoryCarousel } from "../features/products/ProductCategoryCarousel";
 import { Header } from "../features/header/Header";
 import { Outlet, useLocation } from "react-router-dom";
 export const Shop = () => {

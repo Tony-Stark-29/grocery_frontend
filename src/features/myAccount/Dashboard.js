@@ -20,7 +20,7 @@ export const Dashboard = () => {
             <h6 className="fw-bolder text-center mx-2">Total Orders</h6>
           </div>
           <p>
-            <strong className="  px-2">6</strong>
+            <strong className="  px-2">0</strong>
           </p>
         </div>
         <div className="  d-flex flex-row align-items-center justify-content-between my-4  px-2 py-1  ">
@@ -34,7 +34,7 @@ export const Dashboard = () => {
             <h6 className="fw-bolder text-center mx-2">Cart Items</h6>
           </div>
           <p>
-            <strong className="  px-2">6</strong>
+            <strong className="  px-2">0</strong>
           </p>
         </div>
         <div className="  d-flex flex-row align-items-center justify-content-between  my-4  px-2 py-1  ">
@@ -45,7 +45,7 @@ export const Dashboard = () => {
             <h6 className="fw-bolder text-center mx-2">Liked Items</h6>
           </div>
           <p>
-            <strong className="  px-2">6</strong>
+            <strong className="  px-2">0</strong>
           </p>
         </div>
       </div>

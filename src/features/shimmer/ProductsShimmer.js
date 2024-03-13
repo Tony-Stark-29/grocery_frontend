@@ -12,7 +12,7 @@ export const ProductsShimmer = ({ count }) => {
       {arr.map((item,index) => (
         <div
         key={index}
-          className="col-2 rounded-0 border shimmer"
+          className="col-6 col-md-2 rounded-0 border shimmer"
           style={{ minHeight: "350px" }}
         ></div>
       ))}
